@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Examscorer</string>
+    <string name="ptu_main_campus_question_papers">PTU Main Campus Question Papers</string>
+    <string name="sign_in_to_your_account">Sign in to your account</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello H fragment</string>
+</resources>

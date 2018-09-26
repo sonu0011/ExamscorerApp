@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sonu.kumar.examscorer.Activity.SemesterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:fontFamily="@font/custom_font"
+        android:textSize="25sp"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="Semester"/>
+    <include layout="@layout/recycleviewlayout"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_marginTop="80dp"
+    />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:theme="@style/CardView"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/images1"
+        android:id="@+id/notes_cat_image" />
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_margin="5dp"
+       android:layout_height="1dp"
+       android:layout_below="@+id/notes_cat_image"
+       android:background="#000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notes_cat_image"
+        android:text="Databse Management System"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        android:id="@+id/notes_subcat_title"/>
+    <TextView
+        android:layout_below="@+id/notes_subcat_title"
+        android:id="@+id/notes_count_text"
+        android:textColor="#fff"
+        android:padding="5dp"
+        android:layout_width="60dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/cat_design"
+        android:text="20"
+        android:layout_marginBottom="10dp"/>
+</RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,66 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="sonu.kumar.examscorer.Fragments.FeedbackFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/feedback_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/feedback"/>
+        <EditText
+        android:textStyle="bold"
+            android:editable="false"
+            android:background="@drawable/feddback_bg"
+            android:layout_below="@+id/feedback_image"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="skr3704@gmail.com"
+            android:textSize="19sp"
+            android:padding="7dp"
+            android:textColor="#96000000"
+            android:id="@+id/feedback_email"
+            android:fontFamily="@font/custom_font"
+            tools:ignore="Deprecated" />
+        <EditText
+
+            android:background="@drawable/feddback_bg"
+            android:textColor="#a2000000"
+            android:textStyle="normal"
+            android:gravity="start"
+            android:fontFamily="@font/custom_font_dark"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/feedback_email"
+            android:id="@+id/feedback_message"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="\n\n                           comments"
+            android:inputType="textMultiLine"
+            android:longClickable="false"
+            android:textColorHint="#96000000"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send Feedback"
+            android:layout_margin="10dp"
+            android:textColor="#fff"
+            android:background="@drawable/btn_bg"
+            android:layout_below="@+id/feedback_message"/>
+    </RelativeLayout>
+    </ScrollView>
+
+
+</FrameLayout>

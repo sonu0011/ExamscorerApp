@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerlayout"
+    android:fitsSystemWindows="true"
+    tools:context="sonu.kumar.examscorer.Activity.BranchActivity">
+   <RelativeLayout
+       android:focusable="true"
+       android:focusableInTouchMode="true"
+       android:layout_width="match_parent"
+       android:orientation="vertical"
+       android:layout_height="match_parent">
+
+       <android.support.v7.widget.Toolbar
+           android:id="@+id/toolbar"
+           android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+           android:layout_width="match_parent"
+           android:elevation="5dp"
+           app:layout_scrollFlags="scroll"
+
+           android:layout_height="wrap_content"
+           android:background="@drawable/gradient">
+
+       </android.support.v7.widget.Toolbar>
+        <Button
+            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:onClick="SelectOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   Please Select"
+
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="9dp"
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/select_option_btn"
+            android:background="@drawable/searchbg"
+            android:fontFamily="@font/custom_font_dark"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+              />
+       <EditText
+           android:textColorHint="#000"
+           android:layout_below="@+id/select_option_btn"
+           android:maxLength="20"
+           android:fontFamily="@font/custom_font_dark"
+           android:id="@+id/home_paper_search"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"
+           android:hint="  Subject or Subject code"
+           android:padding="8dp"
+           android:inputType="text"
+           android:layout_marginLeft="15dp"
+           android:background="@drawable/searchbg"
+           android:layout_marginRight="15dp"/>
+       <View
+           android:layout_width="1dp"
+           android:layout_height="37dp"
+           android:layout_marginTop="124dp"
+
+           android:layout_toLeftOf="@+id/homesearch_btn"
+           android:layout_toStartOf="@+id/homesearch_btn"
+           android:background="@drawable/line1"
+           android:id="@+id/view2" />
+       <ImageView
+           android:id="@+id/homesearch_btn"
+           android:layout_width="wrap_content"
+           android:layout_marginTop="4dp"
+           android:layout_height="wrap_content"
+           android:layout_alignEnd="@+id/home_paper_search"
+           android:layout_alignRight="@+id/home_paper_search"
+           android:layout_alignTop="@+id/home_paper_search"
+           android:src="@drawable/searchicon" />
+       <FrameLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:id="@+id/framelauout">
+
+       </FrameLayout>
+
+
+   </RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/navigationview"
+        app:headerLayout="@layout/nav_header"
+        android:layout_gravity="start"
+
+        app:menu="@menu/activity_home_drawer"
+        />
+</android.support.v4.widget.DrawerLayout>

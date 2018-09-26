@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/intro_image"
+        android:layout_marginTop="60dp"
+       android:layout_centerHorizontal="true"
+        android:src="@drawable/intro_papers"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:fontFamily="@font/custom_font_dark"
+
+        android:id="@+id/intro_heading"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro_image"
+        android:text="Heading"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:textColor="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro_heading"
+        android:textSize="18sp"
+        android:id="@+id/intro_desc"
+        android:layout_margin="50dp"
+      android:fontFamily="@font/custom_font"
+        android:text="Ptu Main Campus question paper"/>
+
+</RelativeLayout>

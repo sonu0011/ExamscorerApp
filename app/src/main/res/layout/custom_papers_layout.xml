@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/CardView"
+    android:layout_margin="10dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="#790d1eb6"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/papers_mst"
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:text="MST-I"
+            android:paddingTop="50dp"
+
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/custom_font"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/remove_from_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_cancel_black_24dp" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="140dp"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/papers_fav"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite_border_black_24dp"/>
+        <ImageView
+            android:id="@+id/papers_download"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_file_download_black_24dp"/>
+
+        <ImageView
+            android:id="@+id/papers_share"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share_black_24dp"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
