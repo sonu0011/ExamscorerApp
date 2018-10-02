@@ -45,6 +45,7 @@ style="@style/Widget.Support.CoordinatorLayout"
 
     <!-- Your Scrollable View : Can be Nested Scroll View or Recycler View-->
     <android.support.v7.widget.RecyclerView
+        android:layout_margin="5dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

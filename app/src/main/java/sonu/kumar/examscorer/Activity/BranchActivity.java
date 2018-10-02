@@ -94,17 +94,23 @@ SharedPreferences sharedPreferences;
         navigationView = findViewById(R.id.navigationview);
         home_search_btn =findViewById(R.id.homesearch_btn);
         home_search_editext =findViewById(R.id.home_paper_search);
+
         sharedPreferences =getSharedPreferences(Constants.SHARED_KEY,MODE_PRIVATE);
         shared_image_url = sharedPreferences.getString(Constants.LOGIN_USER_IMAGE,null);
         shared_user_name =sharedPreferences.getString(Constants.LOGIN_USER_Name,null);
         shared_user_email =sharedPreferences.getString(Constants.LOGIN_USER_EMAIL,null);
         user_id =sharedPreferences.getInt(Constants.LOGIN_USER_ID,0);
 
+        Log.d(TAG, "onCreate: image urlo "+shared_image_url);
+        Log.d(TAG, "onCreate: username"+shared_user_name);
+        Log.d(TAG, "onCreate: userid"+user_id);
+
 
         relativeLayout = navigationView.getHeaderView(0).findViewById(R.id.headerView);
         profile_image =navigationView.getHeaderView(0).findViewById(R.id.profile_image);
         user_name =navigationView.getHeaderView(0).findViewById(R.id.profiel_user_name);
         user_email =navigationView.getHeaderView(0).findViewById(R.id.profile_email_address);
+
         toolbar =findViewById(R.id.toolbar);
         frameLayout =findViewById(R.id.framelauout);
         selectoption =findViewById(R.id.select_option_btn);
@@ -349,55 +355,73 @@ SharedPreferences sharedPreferences;
         //Request to fetch profile data based on user id
 
 
-        StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
-                Constants.Request_Url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d(TAG, "onResponse profile data: "+response);
-                        if (response!=null){
-                            try {
-                                JSONArray jsonArray =new JSONArray(response);
-                                for (int i=0;i<jsonArray.length();i++){
-                                    JSONObject jsonObject =jsonArray.getJSONObject(i);
-                                    String  email  = jsonObject.getString("user_email");
-                                    if (email !=null){
-                                        user_email.setText(email);
-                                    }
-                                    String name =jsonObject.getString("user_name");
-                                    if (name !=null){
-                                        user_name.setText("Hi, "+name);
-                                    }
-                                    String image =jsonObject.getString("user_profile_pic");
-                                    if (!image.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")){
-                                        Log.d(TAG, "onResponse: not equal "+image);
-                                        Glide.with(BranchActivity.this).load(image).into(profile_image);
-                                    }
+//        StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
+//                Constants.Request_Url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Log.d(TAG, "onResponse profile data: "+response);
+//                        if (response!=null){
+//                            try {
+//                                JSONArray jsonArray =new JSONArray(response);
+//                                for (int i=0;i<jsonArray.length();i++){
+//                                    JSONObject jsonObject =jsonArray.getJSONObject(i);
+//                                    String  email  = jsonObject.getString("user_email");
+//                                    if (email !=null){
+//                                        user_email.setText(email);
+//                                    }
+//                                    String name =jsonObject.getString("user_name");
+//                                    if (name !=null){
+//                                        user_name.setText("Hi, "+name);
+//                                    }
+//                                    String image =jsonObject.getString("user_profile_pic");
+//                                    if (!image.equals("http://192.168.44.178/ExamscorerApp/API/Uploads/")){
+//                                        Log.d(TAG, "onResponse: not equal "+image);
+//                                        Glide.with(BranchActivity.this).load(image).into(profile_image);
+//                                    }
+//
+//
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                }
+//        ) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> map = new HashMap<>();
+//                map.put("fetchprofiledetails", "set");
+//                map.put("user_id", String.valueOf(user_id));
+//                return map;
+//            }
+//        };
+//        Mysingleton.getInstance(BranchActivity.this).addToRequestQuee(stringRequest1);
+        if (shared_user_name !=null) {
+            if (shared_user_name != null) {
+                user_name.setText("Hi, " + shared_user_name);
 
 
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                }
-        ) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<>();
-                map.put("fetchprofiledetails", "set");
-                map.put("user_id", String.valueOf(user_id));
-                return map;
             }
-        };
-        Mysingleton.getInstance(BranchActivity.this).addToRequestQuee(stringRequest1);
+        }
+        if (shared_image_url !=null){
+            if (!shared_image_url.equals("http://192.168.44.178/ExamscorerApp/API/Uploads/")){
+                Glide.with(BranchActivity.this).load(shared_image_url).into(profile_image);
+
+            }
+        }
+
+        if (shared_user_email !=null){
+             user_email.setText(shared_user_email);
+
+        }
     }
 }

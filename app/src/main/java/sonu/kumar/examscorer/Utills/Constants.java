@@ -27,10 +27,10 @@ public class Constants {
     public static final String LOGIN_USER_ID = "user_id";
     public static final String REMEMBER_ME ="REMEMBER_ME";
     public static final String LOGIN_USER_IMAGE="user_image";
-    public static final String Request_Url ="http://192.168.43.126/ExamscorerApp/API/allrequests.php";
-    public static final String NOTES_IMG ="http://192.168.43.126/ExamscorerApp/images/notes_img.jpg";
-    public static final String NOTES_PDF ="http://192.168.43.126/ExamscorerApp/images/pdf_img.jpg";
-    public static final String NOTES_PPT ="http://192.168.43.126/ExamscorerApp/images/ppt_img.jpg";
+    public static final String Request_Url ="http://192.168.44.178/ExamscorerApp/API/allrequests.php";
+    public static final String NOTES_IMG ="http://192.168.44.178/ExamscorerApp/images/notes_img.jpg";
+    public static final String NOTES_PDF ="http://192.168.44.178/ExamscorerApp/images/pdf_img.jpg";
+    public static final String NOTES_PPT ="http://192.168.44.178/ExamscorerApp/images/ppt_img.jpg";
     public void ShowLogoutDialog(final Context context){
         sharedPreferences =context.getSharedPreferences(Constants.SHARED_KEY,MODE_PRIVATE);
 

@@ -13,8 +13,8 @@
         <TextView
             android:padding="8dp"
             android:textSize="18sp"
-            android:textColor="#d67412"
-            android:fontFamily="@font/custom_font"
+            android:textColor="#000"
+            android:fontFamily="@font/custom_font_dark"
             android:layout_width="0dp"
             android:layout_weight="8"
             android:layout_height="wrap_content"

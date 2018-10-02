@@ -52,6 +52,7 @@
             android:longClickable="false"
             android:textColorHint="#96000000"/>
         <Button
+            android:id="@+id/feedback_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Send Feedback"

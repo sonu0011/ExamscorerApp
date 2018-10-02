@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sonu.kumar.examscorer.Activity.PPTANDPDFActivity">
+    tools:context="sonu.kumar.examscorer.Activity.ImagesActivity">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/image_recycleview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:id="@+id/ppt_pdf_recycleview"/>
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

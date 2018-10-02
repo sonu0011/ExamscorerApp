@@ -17,6 +17,7 @@
         android:layout_marginTop="94dp"
         android:src="@drawable/profile_log" />
     <EditText
+        android:maxLength="20"
         android:padding="11dp"
         android:background="@drawable/edittext_bg"
         android:id="@+id/update_profile_user_name"

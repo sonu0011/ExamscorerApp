@@ -10,14 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import sonu.kumar.examscorer.Activity.ImagesActivity;
 import sonu.kumar.examscorer.Activity.NotesSubCategory;
-import sonu.kumar.examscorer.Activity.PPTANDPDFActivity;
 import sonu.kumar.examscorer.Models.AnotherCommonModel;
 import sonu.kumar.examscorer.Models.CommonModel;
 import sonu.kumar.examscorer.R;
@@ -37,6 +36,7 @@ public class NotesCategoryAdapter extends RecyclerView.Adapter<NotesCategoryAdap
         this.context = context;
         this.list1 = list1;
         this.i = i;
+        Log.d(TAG, "NotesCategoryAdapter: value of i is 1");
     }
 
     public NotesCategoryAdapter(List<CommonModel> list, Context context) {
@@ -119,18 +119,14 @@ public class NotesCategoryAdapter extends RecyclerView.Adapter<NotesCategoryAdap
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       String cat_id =  model.getNotes_catid();
-                       String subcat_id =model.getNotes_sub_id();
-                       String notes_subcat_title =model.getNotes_sub_cat_title();
-                       if (Integer.valueOf(cat_id) >1){
-                           Intent intent =new Intent(context, PPTANDPDFActivity.class);
-                           intent.putExtra("cat_id",cat_id);
-                           intent.putExtra("subcat_id",subcat_id);
-                           intent.putExtra("subcat_title",notes_subcat_title);
-                           context.startActivity(intent);
-
-                       }
-
+                        String cat_id = model.getNotes_catid();
+                        String subcat_id = model.getNotes_sub_id();
+                        String notes_subcat_title = model.getNotes_sub_cat_title();
+                        Intent intent = new Intent(context, ImagesActivity.class);
+                        intent.putExtra("cat_id", cat_id);
+                        intent.putExtra("subcat_id", subcat_id);
+                        intent.putExtra("subcat_title", notes_subcat_title);
+                        context.startActivity(intent);
 
                     }
                 });

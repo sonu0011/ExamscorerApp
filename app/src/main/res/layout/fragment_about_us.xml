@@ -3,7 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="sonu.kumar.examscorer.Fragments.AboutUsFragment">
+   <RelativeLayout
+       android:layout_marginTop="40dp"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <TextView
+           android:id="@+id/our_mission"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="- Our Mission -"
+           android:textSize="25dp"
+           android:padding="10dp"
+           android:layout_margin="8dp"
+           android:textColor="#000"
+           android:fontFamily="@font/custom_font"
+           android:layout_centerHorizontal="true"/>
+       <TextView
+           android:id="@+id/about_heading"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/our_mission"
+           android:layout_centerHorizontal="true"
+           android:textSize="16sp"
+           android:padding="5sp"
+           android:fontFamily="@font/custom_font_dark"
+           android:layout_margin="5sp"
+           android:text="To provide PTU (B-Tech)  latest quesiton papers"/>
 
-    <!-- TODO: Update blank fragment layout -->
+       <TextView
+           android:layout_below="@+id/about_heading"
+           android:textSize="25dp"
+           android:padding="10dp"
+           android:layout_margin="8dp"
+           android:textColor="#000"
+           android:fontFamily="@font/custom_font"
+           android:layout_centerHorizontal="true"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="About"
+           android:id="@+id/about_about"/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/about_about"
+           android:textSize="16sp"
+           android:padding="8sp"
+           android:text="@string/heading"
+           android:fontFamily="@font/custom_font_dark"
+           android:layout_margin="5sp"/>
+   </RelativeLayout>
+
 
 </FrameLayout>

@@ -17,4 +17,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello H fragment</string>
+    <string name="heading">Examscorer is an android app, from where you can download PTU(B-Tech) latest question papers. You can also visit website examscorer.co.in. Here you have same material but from app you can also download important pdf\'s ,notes and ppt\'s . Support us by sharing this app to your friends. \n Thank You!</string>
 </resources>

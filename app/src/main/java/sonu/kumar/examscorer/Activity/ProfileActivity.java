@@ -82,6 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Profile");
         getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         checkInternetConnection = new CheckInternetConnection();
         registerReceiver(checkInternetConnection, intentFilter);
@@ -208,8 +209,11 @@ public class ProfileActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View view) {
-                if (profile_image_from_shared !=null) {
-                    if (profile_image_from_shared.length() == 0) {
+
+                Log.d(TAG, "onClick: ");
+
+                if (profile_image_from_shared != null) {
+                    if (profile_image_from_shared.equals("http://192.168.44.178/ExamscorerApp/API/Uploads/")) {
                         if (ImageUri == null) {
                             Toast.makeText(ProfileActivity.this, "Please select a profile image", Toast.LENGTH_SHORT).show();
                             return;
@@ -232,7 +236,7 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                     }
                 }
-                if (profile_image_from_shared ==null && user_name_from_shaared ==null){
+                if (profile_image_from_shared == null && user_name_from_shaared == null) {
                     if (ImageUri == null) {
                         Toast.makeText(ProfileActivity.this, "Please select a profile image", Toast.LENGTH_SHORT).show();
                         return;
@@ -255,84 +259,84 @@ public class ProfileActivity extends AppCompatActivity {
                     }
 
                 }
-                if (profile_image_from_shared !=null){
-                 if (profile_image_from_shared.length() >0 && ImageUri ==null) {
-                     if (update_user_name.getText().toString().trim().isEmpty()) {
-                         Toast.makeText(ProfileActivity.this, "Enter your name", Toast.LENGTH_SHORT).show();
-                     } else {
-                         //update name only
-                         final ProgressDialog pd = new ProgressDialog(ProfileActivity.this);
-                         pd.setMessage("Updating profile...");
-                         pd.setCanceledOnTouchOutside(false);
-                         pd.show();
+                if (profile_image_from_shared != null) {
+                    if (!profile_image_from_shared.equals("http://192.168.44.178/ExamscorerApp/API/Uploads/") && ImageUri == null) {
+                        if (update_user_name.getText().toString().trim().isEmpty()) {
+                            Toast.makeText(ProfileActivity.this, "Enter your name", Toast.LENGTH_SHORT).show();
+                        } else {
+                            //update name only
+                            final ProgressDialog pd = new ProgressDialog(ProfileActivity.this);
+                            pd.setMessage("Updating profile...");
+                            pd.setCanceledOnTouchOutside(false);
+                            pd.show();
 
-                         StringRequest stringRequest = new StringRequest(StringRequest.Method.POST,
-                                 Constants.Request_Url,
-                                 new Response.Listener<String>() {
-                                     @Override
-                                     public void onResponse(String response) {
-                                         Log.d(TAG, "onResponse update name only: " + response);
-                                         if (response.equals("1")) {
-                                             Log.d(TAG, "onResponse: " + response);
-                                             pd.dismiss();
-                                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                                             editor.putString(Constants.LOGIN_USER_Name, update_user_name.getText().toString());
-                                             editor.apply();
+                            StringRequest stringRequest = new StringRequest(StringRequest.Method.POST,
+                                    Constants.Request_Url,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.d(TAG, "onResponse update name only: " + response);
+                                            if (response.equals("1")) {
+                                                Log.d(TAG, "onResponse: " + response);
+                                                pd.dismiss();
+                                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                editor.putString(Constants.LOGIN_USER_Name, update_user_name.getText().toString());
+                                                editor.apply();
 
-                                             Toast.makeText(ProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
-                                             startActivity(new Intent(ProfileActivity.this, BranchActivity.class));
-                                             finish();
-                                         }
-
-
-                                     }
-                                 },
-                                 new Response.ErrorListener() {
-                                     @Override
-                                     public void onErrorResponse(VolleyError error) {
-                                         Log.d(TAG, "onErrorResponse: " + error.getMessage());
-
-                                     }
-                                 }
-                         ) {
-                             @Override
-                             protected Map<String, String> getParams() throws AuthFailureError {
-                                 Map<String, String> map = new HashMap<>();
-                                 map.put("UpdateName", "set");
-                                 map.put("user_id", String.valueOf(user_id));
-                                 map.put("user_name", update_user_name.getText().toString());
-                                 return map;
-                             }
-                         };
-                         progressDialog.dismiss();
-                         Mysingleton.getInstance(ProfileActivity.this).addToRequestQuee(stringRequest);
+                                                Toast.makeText(ProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(ProfileActivity.this, BranchActivity.class));
+                                                finish();
+                                            }
 
 
-                     }
-                 }
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.d(TAG, "onErrorResponse: " + error.getMessage());
 
-                }
-                if (ImageUri !=null){
-                    if (update_user_name.getText().toString().trim().isEmpty()){
-                        Toast.makeText(ProfileActivity.this, "Enter your name", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        //update n ame and  profile
-                        //update shared pref value
-                        try {
-                            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), ImageUri);
-                            UploadImage();
+                                        }
+                                    }
+                            ) {
+                                @Override
+                                protected Map<String, String> getParams() throws AuthFailureError {
+                                    Map<String, String> map = new HashMap<>();
+                                    map.put("UpdateName", "set");
+                                    map.put("user_id", String.valueOf(user_id));
+                                    map.put("user_name", update_user_name.getText().toString());
+                                    return map;
+                                }
+                            };
+                            progressDialog.dismiss();
+                            Mysingleton.getInstance(ProfileActivity.this).addToRequestQuee(stringRequest);
 
 
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
-
-
-
-
                     }
+
                 }
+                if (profile_image_from_shared != null)
+                {
+                    if (ImageUri != null && !profile_image_from_shared.equals("http://192.168.44.178/ExamscorerApp/API/Uploads/")) {
+                        if (update_user_name.getText().toString().trim().isEmpty()) {
+                            Toast.makeText(ProfileActivity.this, "Enter your name", Toast.LENGTH_SHORT).show();
+                        } else {
+                            //update n ame and  profile
+                            //update shared pref value
+                            try {
+                                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), ImageUri);
+                                UploadImage();
+
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
+                    }
+            }
             }
         });
 
@@ -352,7 +356,10 @@ public class ProfileActivity extends AppCompatActivity {
                         Log.d(TAG, "onResponse: "+response);
                         if (response.equals("1")){
                             Log.d(TAG, "onResponse: "+response);
-                            pd1.dismiss();
+                            if (pd1.isShowing()){
+                                pd1.dismiss();
+
+                            }
                            String username =  update_user_name.getText().toString();
                            String withoutspace = username.replaceAll("\\s","");
                             Toast.makeText(ProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
@@ -360,7 +367,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
                             SharedPreferences.Editor editor =sharedPreferences.edit();
-                            editor.putString(Constants.LOGIN_USER_IMAGE,"http://192.168.43.126/ExamscorerApp/API/Uploads/"+withoutspace+user_id+"."+"jpg");
+                            editor.putString(Constants.LOGIN_USER_IMAGE,"http://192.168.44.178/ExamscorerApp/API/Uploads/"+withoutspace+user_id+"."+"jpg");
                             editor.putString(Constants.LOGIN_USER_Name,update_user_name.getText().toString());
                             editor.apply();
                             startActivity(new Intent(ProfileActivity.this,BranchActivity.class));
@@ -403,6 +410,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
+                Log.d(TAG, "onActivityResult: "+result.getUri());
                 ImageUri = result.getUri();
                 circularImageView.setImageURI(result.getUri());
 
