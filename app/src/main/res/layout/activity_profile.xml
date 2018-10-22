@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/images"
+    android:background="@drawable/bg"
 
     tools:context="sonu.kumar.examscorer.Activity.ProfileActivity">
 
@@ -30,7 +30,10 @@
         android:hint=" Enter your name" />
 
     <Button
-        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/custom_font_dark"
+        android:textColor="#000"
         android:id="@+id/update_save_changes_btn"
         android:background="@drawable/btn_bg"
         android:layout_margin="15dp"
@@ -39,7 +42,7 @@
         android:layout_below="@+id/update_profile_user_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
-        android:text="Save Changes" />
+        android:text="Update Profile" />
 
 
 

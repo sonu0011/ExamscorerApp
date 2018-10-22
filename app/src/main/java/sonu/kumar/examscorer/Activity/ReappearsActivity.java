@@ -85,36 +85,45 @@ public class ReappearsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu,menu);
+        Log.d(TAG, "onCreateOptionsMenu: ");
+        getMenuInflater().inflate(R.menu.search_menu, menu);
 
-        MenuItem menuItem =menu.findItem(R.id.search_menu);
+        MenuItem menuItem = menu.findItem(R.id.search_menu);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                ArrayList<CommonModel> arrayList =new ArrayList<>();
-                for (CommonModel model:list){
-                    if (model.getSp_title().toLowerCase().contains(newText.toLowerCase())){
-                        arrayList.add(model);
-                    }
+            Log.d(TAG, "onCreateOptionsMenu: "+searchView);
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
                 }
-                reappearAdapter.FilterList(arrayList);
 
-                return false;
-            }
-        });
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    ArrayList<CommonModel> arrayList = new ArrayList<>();
+                    for (CommonModel model : list) {
+                        if (model.getSp_title().toLowerCase().contains(newText.toLowerCase())) {
+                            arrayList.add(model);
+                        }
+                    }
+                    reappearAdapter.FilterList(arrayList);
+
+                    return false;
+                }
+            });
+
+
+
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public void onStart() {
         super.onStart();
+        Log.d(TAG, "onStart: ");
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {

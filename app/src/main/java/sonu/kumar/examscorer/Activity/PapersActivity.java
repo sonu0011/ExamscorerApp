@@ -108,11 +108,11 @@ public class PapersActivity extends AppCompatActivity {
                                 int paper_id =jsonObject.getInt("paper_id");
 
 
-                                list.add(new CommonModel( title, link,paper_id));
+                                list.add(new CommonModel( title, link,paper_id,""));
 
 
                             }
-                            paperAdapter = new PaperAdapter(getApplicationContext(),sub_code,list,coordinatorLayout);
+                            paperAdapter = new PaperAdapter(getApplicationContext(),sub_code,list,coordinatorLayout,3);
                             recyclerView.setAdapter(paperAdapter);
 
                         } catch (JSONException e) {

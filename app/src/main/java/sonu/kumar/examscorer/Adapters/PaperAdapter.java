@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -93,13 +95,16 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
        final CommonModel model =  list.get(position);
         String result = model.getPaper_title().substring(model.getPaper_title().indexOf("(") + 1, model.getPaper_title().indexOf(")"));
         if (i ==1){
+            // for favorites
             holder.sub_name.setText(model.getPaper_title());
             int color = Color.parseColor("#FF0000");
             holder.paper_fav.setColorFilter(color);
 
         }
         else if (i ==2){
+            //for searched result
             holder.sub_name.setText(model.getPaper_title());
+            holder.branch_name.setText(model.getBranch_name());
 
         }
         else {
@@ -159,18 +164,36 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView  sub_name;
+        TextView  sub_name,branch_name;
         ImageView paper_fav,paper_download,paper_share,remove;
+        LinearLayout linearLayout;
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "roboto.ttf");
+
         public ViewHolder(View itemView) {
             super(itemView);
             sub_name =itemView.findViewById(R.id.papers_mst);
             paper_fav =itemView.findViewById(R.id.papers_fav);
             paper_download =itemView.findViewById(R.id.papers_download);
             paper_share  = itemView.findViewById(R.id.papers_share);
+            branch_name = itemView.findViewById(R.id.branch_name);
             remove =itemView.findViewById(R.id.remove_from_fav);
+            linearLayout = itemView.findViewById(R.id.brnch_name_layout);
+            sub_name.setTypeface(custom_font,Typeface.BOLD);
+            branch_name.setTypeface(custom_font,Typeface.BOLD);
+
             if (i ==1){
+                // for  favourites
                 remove.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.INVISIBLE);
             }
+            if (i ==3){
+                //for papers
+                linearLayout.setVisibility(View.INVISIBLE);
+
+            }
+
+
+
 
         }
 

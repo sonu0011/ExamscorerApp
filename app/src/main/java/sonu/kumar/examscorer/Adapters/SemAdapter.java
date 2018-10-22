@@ -2,6 +2,7 @@ package sonu.kumar.examscorer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import sonu.kumar.examscorer.Activity.SubjecstActivity;
@@ -64,10 +66,15 @@ public class SemAdapter extends RecyclerView.Adapter<SemAdapter.Viewholder> {
 
     public class Viewholder extends RecyclerView.ViewHolder {
         TextView imageView;
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "roboto.ttf");
+
+
 
         public Viewholder(View itemView) {
             super(itemView);
             imageView =itemView.findViewById(R.id.sem_title);
+            imageView.setTypeface(custom_font, Typeface.BOLD);
+
         }
 
         public void getData(int position) {

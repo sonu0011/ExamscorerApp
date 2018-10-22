@@ -29,11 +29,12 @@
         android:text="mst1"
         android:textColor="#000"
         android:textSize="20sp"
-        android:textStyle="italic" />
+        android:textStyle="normal" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_papers"
-
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 

@@ -29,7 +29,7 @@
 
         </LinearLayout>
         <TextView
-            android:background="#d628d6"
+            android:background="#790d1eb6"
             android:textColor="#fff"
             android:id="@+id/reappear_sub_title"
             android:layout_width="match_parent"

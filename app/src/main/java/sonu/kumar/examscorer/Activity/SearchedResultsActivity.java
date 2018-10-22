@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -108,7 +109,7 @@ public class SearchedResultsActivity extends AppCompatActivity {
                         Log.d(TAG, "onResponse: papers " + response);
                         if (response.equals("[]")) {
                             progressDialog.dismiss();
-                            Toast.makeText(SearchedResultsActivity.this, "No result found", Toast.LENGTH_SHORT).show();
+                            Snackbar.make(coordinatorLayout,"No result found, try again !!",Snackbar.LENGTH_LONG).show();
                         } else {
                             JSONArray jsonArray = null;
                             try {
@@ -120,12 +121,15 @@ public class SearchedResultsActivity extends AppCompatActivity {
                                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                                     String title = jsonObject.getString("paper_title");
                                     String link = jsonObject.getString("paper_link");
+                                    String branch_name = jsonObject.getString("branch_name");
                                     int paper_id = jsonObject.getInt("paper_id");
+                                    if (branch_name == null) {
+                                        list.add(new CommonModel(title, link, paper_id, ""));
 
+                                    } else {
 
-                                    list.add(new CommonModel(title, link, paper_id));
-
-
+                                        list.add(new CommonModel(title, link, paper_id, branch_name));
+                                    }
                                 }
                                 paperAdapter = new PaperAdapter(getApplicationContext(), sub_code, list, coordinatorLayout, 2);
                                 recyclerView.setAdapter(paperAdapter);
@@ -133,8 +137,6 @@ public class SearchedResultsActivity extends AppCompatActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-
-
                         }
                         progressDialog.dismiss();
                     }

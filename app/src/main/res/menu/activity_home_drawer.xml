@@ -8,71 +8,64 @@
         <item
             android:id="@+id/nav_home"
             android:checkable="false"
-            android:icon="@drawable/home"
+            android:icon="@drawable/ic_action_home"
             android:title="Home" />
         <item
             android:id="@+id/nav_notes"
             android:checkable="false"
-            android:icon="@drawable/notes"
+            android:icon="@drawable/ic_action_notes"
             android:title="Notes" />
 
         <item
             android:id="@+id/nav_fav"
             app:actionViewClass="android.widget.TextView"
             android:checkable="false"
-            android:icon="@drawable/fav"
+            android:icon="@drawable/ic_action_fav"
             android:title="Favourites" />
         <item
             android:id="@+id/nav_about_us"
-
             android:checkable="false"
-            android:icon="@drawable/aboutus"
+            android:icon="@drawable/ic_action_aboutus"
             android:title="About" />
         <item
             android:id="@+id/nav_share"
 
             android:checkable="false"
-            android:icon="@drawable/share"
+            android:icon="@drawable/ic_action_share"
             android:title="Share" />
         <item
             android:id="@+id/nav_reappearpapers"
 
             android:checkable="false"
-            android:icon="@drawable/reappear"
+            android:icon="@drawable/ic_action_reappear"
             android:title="Reappear Papers" />
     </group>
 
-    <item android:title="Follow Us">
+    <item android:title="Follow Us"
+         >
         <menu>
             <item
                 android:id="@+id/nav_facebook"
-
                 android:checkable="false"
-                android:icon="@drawable/facebook"
+                android:icon="@drawable/ic_action_facebook"
                 android:title="Facebok" />
             <item
-                android:id="@+id/nav_twitter"
-
-                android:checkable="false"
-                android:icon="@drawable/twitter"
+                android:id="@+id/nav_twitter"                android:checkable="false"
+                android:icon="@drawable/ic_action_twitter"
                 android:title="Twitter" />
             <item
                 android:id="@+id/nav_instagram"
-
                 android:checkable="false"
-                android:icon="@drawable/instagram"
+                android:icon="@drawable/ic_action_instagram"
                 android:title="Instagram" />
             <item
                 android:id="@+id/nav_youtube"
-
                 android:checkable="false"
-                android:icon="@drawable/youtube"
+                android:icon="@drawable/ic_action_youtube"
                 android:title="Youtube" />
             <item
                 android:id="@+id/nav_version"
-
                 android:checkable="false"
-
                 android:title="                        1.0.0" />
         </menu>
     </item>

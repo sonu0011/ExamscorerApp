@@ -8,8 +8,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/intro_image"
         android:layout_marginTop="60dp"
+        android:src="@drawable/intro_papers"
        android:layout_centerHorizontal="true"
-        android:src="@drawable/intro_papers"/>
+        />
     <TextView
         android:layout_width="wrap_content"
         android:padding="5dp"
@@ -22,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:layout_below="@+id/intro_image"
-        android:text="Heading"
+
         android:textSize="20sp"
         />
     <TextView
@@ -34,6 +35,6 @@
         android:id="@+id/intro_desc"
         android:layout_margin="50dp"
       android:fontFamily="@font/custom_font"
-        android:text="Ptu Main Campus question paper"/>
+        />
 
 </RelativeLayout>

@@ -8,21 +8,40 @@
     app:cardElevation="10dp"
     app:cardCornerRadius="10dp"
     android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/brnch_name_layout"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/branch_name"
+            android:text="CSE"
+            android:fontFamily="@font/custom_font"
+            android:textColor="#000"
+            android:layout_margin="5sp"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
     <RelativeLayout
-        android:background="#790d1eb6"
+        android:layout_marginTop="30sp"
+        android:background="@color/papercolor"
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/papers_mst"
             android:layout_width="match_parent"
             android:layout_height="135dp"
             android:text="MST-I"
             android:paddingTop="50dp"
-
             android:gravity="center_horizontal"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:fontFamily="@font/custom_font"
+            android:fontFamily="@font/custom_font_dark"
             android:textColor="@android:color/white"/>
 
         <ImageView
@@ -37,7 +56,7 @@
 
     </RelativeLayout>
     <LinearLayout
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="165dp"
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_height="wrap_content">

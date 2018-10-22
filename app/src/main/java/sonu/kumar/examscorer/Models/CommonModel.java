@@ -9,7 +9,7 @@ public class CommonModel {
     String sem_images,sem_title;
     int sem_id;
     String sub_heading,sub_name,sub_code,subject;
-    String paper_title,paper_link;
+    String paper_title,paper_link,branch_name;
     int paper_id;
     String sp_title,sp_link,sp_code;
     int supply_papers,notes_sub_cat;
@@ -78,10 +78,11 @@ public class CommonModel {
         this.sp_code = sp_code;
     }
 
-    public CommonModel(String paper_title, String paper_link, int paper_id) {
+    public CommonModel(String paper_title, String paper_link, int paper_id,String branch_name) {
         this.paper_title = paper_title;
         this.paper_link = paper_link;
         this.paper_id =paper_id;
+        this.branch_name =branch_name;
     }
 
     public CommonModel(String sub_heading, String sub_name, String sub_code, String subject) {
@@ -89,6 +90,15 @@ public class CommonModel {
         this.sub_name = sub_name;
         this.sub_code = sub_code;
         this.subject = subject;
+
+    }
+
+    public String getBranch_name() {
+        return branch_name;
+    }
+
+    public void setBranch_name(String branch_name) {
+        this.branch_name = branch_name;
     }
 
     public int getPaper_id() {

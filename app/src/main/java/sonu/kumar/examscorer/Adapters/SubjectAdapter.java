@@ -2,6 +2,7 @@ package sonu.kumar.examscorer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -62,11 +63,15 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Viewhold
 
     public class Viewholder extends RecyclerView.ViewHolder {
         TextView heading,name,code;
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "roboto.ttf");
+
         public Viewholder(View itemView) {
             super(itemView);
             heading =itemView.findViewById(R.id.sub_heading);
             name =itemView.findViewById(R.id.sub_small);
             code =itemView.findViewById(R.id.sub_code);
+            heading.setTypeface(custom_font,Typeface.BOLD);
+            code.setTypeface(custom_font,Typeface.BOLD);
         }
 
         public void getData(int position) {

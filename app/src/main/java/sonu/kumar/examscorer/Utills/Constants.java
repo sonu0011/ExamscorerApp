@@ -18,6 +18,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Constants {
     SharedPreferences sharedPreferences;
+//push notification constanp
+    public  static String device_id ="";
+    public static final String URL_REGISTER_DEVICE = "http://192.168.43.126/ExamscorerApp/PushNotification/RegisterDevice.php";
+    public static final String URL_SEND_SINGLE_PUSH = "http://192.168.43.126/ExamscorerApp/PushNotification/sendSinglePush.php";
+    public static final String URL_SEND_MULTIPLE_PUSH = "http://192.168.43.126/ExamscorerApp/PushNotification/sendMultiplePush.php";
+    public static final String URL_FETCH_DEVICES = "http://192.168.43.126/ExamscorerApp/PushNotification/GetRegisteredDevices.php";
 
     public static final String FIRST_TIME_LAUNCH ="first_time_launch";
     public static final String SHARED_KEY ="KEY";
@@ -27,10 +33,10 @@ public class Constants {
     public static final String LOGIN_USER_ID = "user_id";
     public static final String REMEMBER_ME ="REMEMBER_ME";
     public static final String LOGIN_USER_IMAGE="user_image";
-    public static final String Request_Url ="http://192.168.44.178/ExamscorerApp/API/allrequests.php";
-    public static final String NOTES_IMG ="http://192.168.44.178/ExamscorerApp/images/notes_img.jpg";
-    public static final String NOTES_PDF ="http://192.168.44.178/ExamscorerApp/images/pdf_img.jpg";
-    public static final String NOTES_PPT ="http://192.168.44.178/ExamscorerApp/images/ppt_img.jpg";
+    public static final String Request_Url ="http://192.168.43.126/ExamscorerApp/API/allrequests.php";
+    public static final String NOTES_IMG ="http://192.168.43.126/ExamscorerApp/images/notes_img.jpg";
+    public static final String NOTES_PDF ="http://192.168.43.126/ExamscorerApp/images/pdf_img.jpg";
+    public static final String NOTES_PPT ="http://192.168.43.126/ExamscorerApp/images/ppt_img.jpg";
     public void ShowLogoutDialog(final Context context){
         sharedPreferences =context.getSharedPreferences(Constants.SHARED_KEY,MODE_PRIVATE);
 

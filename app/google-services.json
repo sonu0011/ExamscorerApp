@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "806904275020",
+    "firebase_url": "https://examscorerappcloudmessaging.firebaseio.com",
+    "project_id": "examscorerappcloudmessaging",
+    "storage_bucket": "examscorerappcloudmessaging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806904275020:android:79e0c40831b4e333",
+        "android_client_info": {
+          "package_name": "sonu.kumar.examscorer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806904275020-k2jvh0k79bqsgur55lenv67alsstse1n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sonu.kumar.examscorer",
+            "certificate_hash": "a6f9aaca80aaf9210e29a514e00289f21f13f259"
+          }
+        },
+        {
+          "client_id": "806904275020-o6mi35etslc48rr8shv5u686h59ohpgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2h4EfoCsf5iSLlJfILzl6TRiWPqNABOM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806904275020-o6mi35etslc48rr8shv5u686h59ohpgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

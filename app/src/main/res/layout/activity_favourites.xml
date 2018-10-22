@@ -10,4 +10,9 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:id="@+id/sub_recycleview"/>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/favcordinate"/>
 </RelativeLayout>

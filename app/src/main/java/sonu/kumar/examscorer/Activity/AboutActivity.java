@@ -14,10 +14,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import sonu.kumar.examscorer.Fragments.AboutUsFragment;
 import sonu.kumar.examscorer.Fragments.ContactUsFragment;
 import sonu.kumar.examscorer.Fragments.FeedbackFragment;
@@ -29,8 +27,7 @@ public class AboutActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private int[] tabIcons = {
-            R.drawable.aboutus,
-            R.drawable.contact,
+            R.drawable.ic_action_aboutus,
             R.drawable.feedback
     };
     @Override

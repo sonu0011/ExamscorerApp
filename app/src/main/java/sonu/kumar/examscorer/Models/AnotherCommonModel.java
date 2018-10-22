@@ -9,6 +9,7 @@ public class AnotherCommonModel {
     String notes_download_link,notes_download_title;
     String notes_download_link1,download_imges_title;
 
+
     public AnotherCommonModel(String notes_download_link1,String download_imges_title,int i) {
         this.notes_download_link1 = notes_download_link1;
         this.download_imges_title =download_imges_title;

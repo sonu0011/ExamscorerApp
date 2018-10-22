@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -19,6 +20,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -76,8 +79,6 @@ public class SubjecstActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                // this takes the user 'back', as if they pressed the left-facing triangle icon on the main android toolbar.
-                // if this doesn't work as desired, another possibility is to call `finish()` here.
                 onBackPressed();
                 return true;
             default:
@@ -93,6 +94,39 @@ public class SubjecstActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d(TAG, "onResponse: "+response);
+                        if (branch_id.equals("1") && sem_id ==3){
+                            StringRequest request =new StringRequest(
+                                    StringRequest.Method.POST,
+                                    Constants.Request_Url,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            Log.d(TAG, "onResponse: cse 3rd sem"+response);
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.d(TAG, "onErrorResponse: cse 3rd sem error"+error.getMessage());
+
+                                        }
+                                    }
+                            ){
+                                @Override
+                                protected Map<String, String> getParams() throws AuthFailureError {
+                                 Map<String,String> map =new HashMap<>();
+
+                                 map.put("cse3rdsem","yes");
+                                 return map;
+                                }
+                            };
+                            Mysingleton.getInstance(getApplicationContext()).addToRequestQuee(request);
+
+
+
+                        }
                         Log.d(TAG, "onResponse: " + response);
                         if (response != null) {
 
@@ -126,6 +160,7 @@ public class SubjecstActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "onErrorResponse: " + error.toString());
+                Log.d(TAG, "onErrorResponse: "+error.getCause());
 
             }
         }) {
@@ -134,7 +169,6 @@ public class SubjecstActivity extends AppCompatActivity {
                 Map<String, String> map = new HashMap<>();
                 map.put("Subject_details", "yes");
                 map.put("branch_id",branch_id);
-                Log.d(TAG, "getParams: "+sem_id+branch_id);
                 map.put("sem_id",String.valueOf(sem_id));
                 return map;
             }

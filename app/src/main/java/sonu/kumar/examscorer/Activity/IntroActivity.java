@@ -1,18 +1,35 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import sonu.kumar.examscorer.Adapters.CustomPagerAdapter;
 import sonu.kumar.examscorer.R;
@@ -28,10 +45,60 @@ public class IntroActivity extends AppCompatActivity {
    SharedPreferences sharedPreferences;
    SharedPreferences.Editor editor;
    public static final String TAG ="IntroActivity";
+    private AlertDialog.Builder mbuilder;
+    private AlertDialog alertDialog;
+    ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
+         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+         networkInfo =connectivityManager.getActiveNetworkInfo();
+        if(networkInfo == null || !networkInfo.isConnected())
+        {
+            mbuilder = new AlertDialog.Builder(IntroActivity.this);
+            View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.internetconnectiondialog, null);
+            mbuilder.setView(view);
+            mbuilder.setCancelable(false);
+            mbuilder.create();
+            alertDialog = mbuilder.show();
+
+            view.findViewById(R.id.cancel_internet).setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, "onClick:Cancel ");
+                    alertDialog.dismiss();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        ((Activity)IntroActivity.this).finishAffinity();
+                    }
+
+
+                }
+            });
+            view.findViewById(R.id.interner_settings).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, "onClick: InternetSettings");
+                    startActivity(new Intent(Settings.ACTION_SETTINGS));
+//                        Intent intent = new Intent(Intent.ACTION_MAIN);
+//                        intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+//                        startActivity(intent);
+                }
+            });
+
+        }
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M)
+        {
+            if(ContextCompat.checkSelfPermission(IntroActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED)
+            {
+                ActivityCompat.requestPermissions(IntroActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
+            }
+
+        }
         prev =findViewById(R.id.prev_btn);
         next =findViewById(R.id.next_btn);
 
@@ -72,9 +139,20 @@ public class IntroActivity extends AppCompatActivity {
                 if (position ==0){
 
                     next.setEnabled(true);
-                    prev.setEnabled(false);
+                    //prev.setText("SKIP");
+                    prev.setEnabled(true);
                     prev.setVisibility(View.INVISIBLE);
-                    next.setText("Next");
+               next.setText("Next");
+//               if (prev.getText().toString().equals("SKIP")){
+//                   prev.setOnClickListener(new View.OnClickListener() {
+//                       @Override
+//                       public void onClick(View view) {
+//                           startActivity(new Intent(IntroActivity.this,LoginActivity.class));
+//                           finish();
+//                       }
+//                   });
+//               }
+
                 }
                 else if (position ==dotstextview.length -1){
                     next.setEnabled(true);
@@ -126,5 +204,32 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        networkInfo =connectivityManager.getActiveNetworkInfo();
+        if(networkInfo == null ||  !networkInfo.isConnected())
+        {
 
+
+        }
+        else {
+            Log.d(TAG, "onRestart: internet connection availabel");
+            alertDialog.dismiss();
+        }
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 2){
+            if (grantResults.length ==0){
+                ActivityCompat.requestPermissions(IntroActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},2);
+
+            }
+        }
+    }
 }

@@ -10,7 +10,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -48,6 +50,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,7 +58,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import sonu.kumar.examscorer.Adapters.ReappearAdapter;
 import sonu.kumar.examscorer.BroadcastReceivers.CheckInternetConnection;
 import sonu.kumar.examscorer.Fragments.HomeFragment;
+import sonu.kumar.examscorer.MyFirebaseInstanceIDService;
 import sonu.kumar.examscorer.R;
+import sonu.kumar.examscorer.SharedPreference;
 import sonu.kumar.examscorer.Utills.Constants;
 import sonu.kumar.examscorer.Utills.CustomTypefaceSpan;
 import sonu.kumar.examscorer.Utills.Mysingleton;
@@ -78,6 +83,7 @@ public static final String TAG ="HOmeActivity";
 String shared_image_url,shared_user_name,shared_user_email;
 SharedPreferences sharedPreferences;
     private CheckInternetConnection checkInternetConnection;
+    CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onDestroy() {
@@ -94,7 +100,7 @@ SharedPreferences sharedPreferences;
         navigationView = findViewById(R.id.navigationview);
         home_search_btn =findViewById(R.id.homesearch_btn);
         home_search_editext =findViewById(R.id.home_paper_search);
-
+        coordinatorLayout =findViewById(R.id.branch_coor);
         sharedPreferences =getSharedPreferences(Constants.SHARED_KEY,MODE_PRIVATE);
         shared_image_url = sharedPreferences.getString(Constants.LOGIN_USER_IMAGE,null);
         shared_user_name =sharedPreferences.getString(Constants.LOGIN_USER_Name,null);
@@ -169,7 +175,55 @@ SharedPreferences sharedPreferences;
             //the method we have create in activity
             applyFontToMenuItem(mi);
         }
+        sendToken();
 
+    }
+    public void sendToken() {
+        Intent intent =new Intent(this, MyFirebaseInstanceIDService.class);
+        startService(intent);
+        final String token = SharedPreference.getInstance(this).getDeviceToken();
+        Log.d(TAG, "sendToken: "+token);
+        if (Constants.device_id == null) {
+            Log.e(TAG, "sendToken: token not generated");
+            return;
+        }
+        else {
+            Log.e(TAG, "sendToken: token generated is "+token);
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER_DEVICE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e(TAG, "onResponse: token response "+response);
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            Log.d(TAG, "onResponse: "+obj.getString("message"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "onErrorResponse: token response"+error.toString());
+
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String email  =sharedPreferences.getString(Constants.LOGIN_USER_EMAIL,null);
+
+                Log.d(TAG, "getParams: "+email +token);
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                params.put("token", token);
+                return params;
+            }
+        };
+        Mysingleton.getInstance(this).addToRequestQuee(stringRequest);
     }
     private void applyFontToMenuItem(MenuItem mi) {
         Typeface font = Typeface.createFromAsset(getAssets(), "dark.ttf");
@@ -193,10 +247,48 @@ SharedPreferences sharedPreferences;
                     return;
                 }
                 else {
-                    Intent intent =new Intent(BranchActivity.this,SearchedResultsActivity.class);
-                    intent.putExtra("selectedoption",selected_option);
-                    intent.putExtra("keyword",home_search_editext.getText().toString());
-                    startActivity(intent);
+                    StringRequest sr =new StringRequest(StringRequest.Method.POST,
+                            Constants.Request_Url,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    Log.d(TAG, "onResponse: ");
+                                    if (response.equals("[]")) {
+                                        Snackbar.make(coordinatorLayout,"No result found, try again !!",Snackbar.LENGTH_SHORT).show();
+                                        return;
+
+                                    }
+                                    else {
+                                        Intent intent =new Intent(BranchActivity.this,SearchedResultsActivity.class);
+                                        intent.putExtra("selectedoption",selected_option);
+                                        intent.putExtra("keyword",home_search_editext.getText().toString());
+                                        startActivity(intent);
+                                    }
+
+
+                                }
+
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                }
+                            }){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> map = new HashMap<>();
+                            map.put("seachedresult", "yes");
+                            map.put("keyword",home_search_editext.getText().toString());
+                            map.put("selectedoption",selected_option);
+                            return map;
+                        }
+                    };
+                    Mysingleton.getInstance(BranchActivity.this).addToRequestQuee(sr);
+
+
+
+
                 }
             }
         });
@@ -375,7 +467,7 @@ SharedPreferences sharedPreferences;
 //                                        user_name.setText("Hi, "+name);
 //                                    }
 //                                    String image =jsonObject.getString("user_profile_pic");
-//                                    if (!image.equals("http://192.168.44.178/ExamscorerApp/API/Uploads/")){
+//                                    if (!image.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")){
 //                                        Log.d(TAG, "onResponse: not equal "+image);
 //                                        Glide.with(BranchActivity.this).load(image).into(profile_image);
 //                                    }
@@ -413,7 +505,7 @@ SharedPreferences sharedPreferences;
             }
         }
         if (shared_image_url !=null){
-            if (!shared_image_url.equals("http://192.168.44.178/ExamscorerApp/API/Uploads/")){
+            if (!shared_image_url.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")){
                 Glide.with(BranchActivity.this).load(shared_image_url).into(profile_image);
 
             }

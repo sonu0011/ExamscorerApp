@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
@@ -102,6 +104,8 @@ String notes_cat_id,notes_subcat_id,notes_subcat_title;
     @Override
     protected void onStart() {
         super.onStart();
+
+
         progressDialog.setMessage("Loading..");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
@@ -120,16 +124,11 @@ String notes_cat_id,notes_subcat_id,notes_subcat_title;
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 String notes_downlad_link = jsonObject.getString("notes_download_link");
                                 String notes_downlad_title = jsonObject.getString("notes_download_title");
-
-
                                 list.add(new AnotherCommonModel(notes_downlad_link,notes_downlad_title,1));
-
-
                             }
-                            adapter = new ImagesAdapter(ImagesActivity.this, list);
+                            adapter = new ImagesAdapter(ImagesActivity.this, list,null);
                             recyclerView.setAdapter(adapter);
                             progressDialog.dismiss();
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

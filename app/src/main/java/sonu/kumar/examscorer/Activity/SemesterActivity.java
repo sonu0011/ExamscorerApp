@@ -8,11 +8,18 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,16 +39,26 @@ import sonu.kumar.examscorer.Utills.Mysingleton;
 
 public class SemesterActivity extends AppCompatActivity {
     RecyclerView recyclerView;
+    AdView adView;
     String branch_id,branch_title;
     SemAdapter semAdapter;
     List<CommonModel>list;
     public static final String TAG ="SEMESTERACTIVITY";
     private CheckInternetConnection checkInternetConnection;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_semester);
+
+        MobileAds.initialize(SemesterActivity.this,"ca-app-pub-9104180069881340~6525361897");
+        adView =findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
+
+
         getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
          branch_id = getIntent().getStringExtra("branch_id");
@@ -58,6 +75,20 @@ public class SemesterActivity extends AppCompatActivity {
         checkInternetConnection = new CheckInternetConnection();
         registerReceiver(checkInternetConnection, intentFilter);
 
+    }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        showINterstialADS();
+//    }
+
+    private void showINterstialADS() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }
     }
 
     @Override

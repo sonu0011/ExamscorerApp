@@ -4,6 +4,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -40,6 +41,7 @@ public class FavouritesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     String sub_code;
     PaperAdapter paperAdapter;
+    CoordinatorLayout coordinatorLayout;
     List<CommonModel> list;
     private SharedPreferences sharedPreferences;
     private CheckInternetConnection checkInternetConnection;
@@ -48,6 +50,8 @@ public class FavouritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
+        Log.d(TAG, "onCreate: ");
+        coordinatorLayout =findViewById(R.id.favcordinate);
         sharedPreferences =getSharedPreferences(Constants.SHARED_KEY,MODE_PRIVATE);
         getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -90,13 +94,16 @@ public class FavouritesActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        Log.d(TAG, "onStart: ");
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response ==null){
-                            Toast.makeText(FavouritesActivity.this, "No favourites found", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "onResponse: "+response);
+                        if (response.equals("[]")){
+                            Snackbar.make(coordinatorLayout,"No favourites found",Snackbar.LENGTH_LONG).show();
+                            //Toast.makeText(FavouritesActivity.this, "No favourites found", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         Log.d(TAG, "onResponse: " + response);
@@ -111,7 +118,7 @@ public class FavouritesActivity extends AppCompatActivity {
                                 String title = jsonObject.getString("paper_title");
                                 String link = jsonObject.getString("paper_link");
                                 int paper_id =jsonObject.getInt("paper_id");
-                                list.add(new CommonModel( title, link,paper_id));
+                                list.add(new CommonModel( title, link,paper_id,""));
 
 
                             }

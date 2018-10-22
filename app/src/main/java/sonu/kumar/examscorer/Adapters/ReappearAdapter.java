@@ -2,6 +2,7 @@ package sonu.kumar.examscorer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,10 +73,14 @@ public class ReappearAdapter extends RecyclerView.Adapter<ReappearAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView reappear_paper_code,reappear_title;
         ImageView download,share;
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "roboto.ttf");
+
         public ViewHolder(View itemView) {
             super(itemView);
             reappear_paper_code =itemView.findViewById(R.id.reappear_sub_code);
             reappear_title =itemView.findViewById(R.id.reappear_sub_title);
+            reappear_title.setTypeface(custom_font, Typeface.BOLD);
+            reappear_paper_code.setTypeface(custom_font);
             download =itemView.findViewById(R.id.reappear_download);
             share =itemView.findViewById(R.id.reappear_share);
         }
