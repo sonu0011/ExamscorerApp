@@ -1,5 +1,6 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.design.widget.CoordinatorLayout;
@@ -89,6 +90,7 @@ public class PapersActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        final ProgressDialog dialog = new Constants().showDialog(PapersActivity.this);
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
@@ -112,8 +114,9 @@ public class PapersActivity extends AppCompatActivity {
 
 
                             }
-                            paperAdapter = new PaperAdapter(getApplicationContext(),sub_code,list,coordinatorLayout,3);
+                            paperAdapter = new PaperAdapter(PapersActivity.this,sub_code,list,coordinatorLayout,3);
                             recyclerView.setAdapter(paperAdapter);
+                            dialog.dismiss();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

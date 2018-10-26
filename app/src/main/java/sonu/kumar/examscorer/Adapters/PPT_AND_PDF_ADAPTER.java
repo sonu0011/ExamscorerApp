@@ -4,6 +4,7 @@ import android.app.DownloadManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -85,12 +86,15 @@ public class PPT_AND_PDF_ADAPTER extends RecyclerView.Adapter<PPT_AND_PDF_ADAPTE
     public class Vieholder extends RecyclerView.ViewHolder {
         TextView titel;
         ImageView share, download;
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "roboto.ttf");
+
 
         public Vieholder(View itemView) {
             super(itemView);
             titel = itemView.findViewById(R.id.pdf_ppt_download_title);
             share = itemView.findViewById(R.id.pdf_ppt_share_icon);
             download = itemView.findViewById(R.id.pdf_ppt_download_icon);
+            titel.setTypeface(custom_font,Typeface.BOLD);
         }
 
         public void setData(final int position) {
@@ -102,6 +106,8 @@ public class PPT_AND_PDF_ADAPTER extends RecyclerView.Adapter<PPT_AND_PDF_ADAPTE
                     Log.d(TAG, "onClick: "+model.getNotes_download_link());
                     Intent intent =new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(model.getNotes_download_link()));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(intent);
 
 
@@ -116,6 +122,8 @@ public class PPT_AND_PDF_ADAPTER extends RecyclerView.Adapter<PPT_AND_PDF_ADAPTE
                     intent.putExtra(Intent.EXTRA_TEXT, model.getNotes_download_link());
 //                   intent.putExtra(Intent.EXTRA_CC,"fghsdja");
 //                   intent.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id=com.agbe.jaquar");
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(Intent.createChooser(intent, "Share Using.."));
 
                 }

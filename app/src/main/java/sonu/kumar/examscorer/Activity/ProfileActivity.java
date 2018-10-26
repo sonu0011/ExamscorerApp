@@ -7,11 +7,15 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -59,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Bitmap bitmap;
     public static final String TAG ="ProfileActivity";
     private CheckInternetConnection checkInternetConnection;
+    Snackbar snackbar;
 
 
     @Override
@@ -190,6 +196,11 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                     else
                     {
+                        if (snackbar!=null){
+                            if (snackbar.isShown()){
+                                snackbar.dismiss();
+                            }
+                        }
                         CropImage.activity()
                                 .setGuidelines(CropImageView.Guidelines.ON)
                                 .setAspectRatio(1,1)
@@ -343,6 +354,46 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d(TAG, "onRequestPermissionsResult: ");
+        switch (requestCode) {
+            case 2: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (snackbar!=null){
+                        if (snackbar.isShown()){
+                            snackbar.dismiss();
+                        }
+                    }// Comment 1.
+
+                    //... we got the permission allowed, now we can try to write the file into storage again ...
+                    Log.d(TAG, "onRequestPermissionsResult:  request granted");
+
+                } else {
+                    Log.d(TAG, "onRequestPermissionsResult:  permission denied");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        Log.d(TAG, "onRequestPermissionsResult: request denied");
+                      snackbar = Snackbar.make(findViewById(android.R.id.content), "We require a write permission. Please allow it in Settings.", Snackbar.LENGTH_INDEFINITE)
+                                .setAction("SETTINGS", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                        intent.setData(uri);
+                                        startActivityForResult(intent, 1000);
+                                    }
+                                });
+                        View snackbarView = snackbar.getView();
+                        TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                        textView.setTextColor(Color.WHITE);
+                        textView.setMaxLines(3);    // Comment 4.
+                        snackbar.show();
+                    }
+
+                }
+            }
+        }
+    }
     private void UploadImage() {
         final ProgressDialog pd1 =new ProgressDialog(ProfileActivity.this);
         pd1.setMessage("Updating profile...");

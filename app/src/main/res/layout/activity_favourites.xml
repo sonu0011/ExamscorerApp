@@ -8,8 +8,31 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
         android:layout_margin="10dp"
         android:id="@+id/sub_recycleview"/>
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/nofav"
+        android:src="@drawable/nofav"
+        android:layout_centerHorizontal="true"
+       android:layout_marginTop="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+<TextView
+    android:visibility="gone"
+    android:id="@+id/nofavtext"
+    android:layout_width="wrap_content"
+    android:textSize="18sp"
+    android:textColor="#000"
+    android:layout_margin="5dp"
+    android:padding="10dp"
+
+    android:layout_centerHorizontal="true"
+    android:fontFamily="@font/custom_font_dark"
+    android:layout_height="wrap_content"
+    android:text="No favourites found"
+    android:layout_below="@+id/nofav"/>
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

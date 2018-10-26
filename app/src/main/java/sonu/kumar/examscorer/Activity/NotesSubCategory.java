@@ -1,5 +1,6 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.app.ProgressDialog;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -128,6 +129,7 @@ public class NotesSubCategory extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        final ProgressDialog dialog = new Constants().showDialog(NotesSubCategory.this);
         if (notes_id.equals("1")) {
             StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                     Constants.Request_Url,
@@ -146,15 +148,17 @@ public class NotesSubCategory extends AppCompatActivity {
                                     String notes_catid = jsonObject.getString("notes_catid");
                                     String notes_subcat_image = jsonObject.getString("notes_subcat_image");
                                     String notes_subcat_title = jsonObject.getString("notes_subcat_title");
+                                    String notes_subcount =jsonObject.getString("count_subcat");
 
 
-                                    list.add(new AnotherCommonModel(notes_sub_id, notes_catid, notes_subcat_image, notes_subcat_title));
+                                    list.add(new AnotherCommonModel(notes_sub_id, notes_catid, notes_subcat_image, notes_subcat_title,notes_subcount));
 
 
                                 }
                                 Log.d(TAG, "onResponse: list size" + list.size());
                                 notesCategoryAdapter = new NotesCategoryAdapter(getApplicationContext(), list, 1);
                                 recyclerView.setAdapter(notesCategoryAdapter);
+                                dialog.dismiss();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -205,6 +209,7 @@ public class NotesSubCategory extends AppCompatActivity {
                                 }
                                 adapter = new PPT_AND_PDF_ADAPTER(getApplicationContext(), list1);
                                 recyclerView.setAdapter(adapter);
+                                dialog.dismiss();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -7,7 +7,7 @@ package sonu.kumar.examscorer.Models;
 public class AnotherCommonModel {
     String notes_sub_id,notes_catid,notes_subcat_image,notes_sub_cat_title;
     String notes_download_link,notes_download_title;
-    String notes_download_link1,download_imges_title;
+    String notes_download_link1,download_imges_title,notes_subcatcount;
 
 
     public AnotherCommonModel(String notes_download_link1,String download_imges_title,int i) {
@@ -56,11 +56,20 @@ public class AnotherCommonModel {
     public AnotherCommonModel() {
     }
 
-    public AnotherCommonModel(String notes_sub_id, String notes_catid, String notes_subcat_image, String notes_sub_cat_title) {
+    public AnotherCommonModel(String notes_sub_id, String notes_catid, String notes_subcat_image, String notes_sub_cat_title,String notes_subcatcount) {
         this.notes_sub_id = notes_sub_id;
         this.notes_catid = notes_catid;
         this.notes_subcat_image = notes_subcat_image;
         this.notes_sub_cat_title = notes_sub_cat_title;
+        this.notes_subcatcount =notes_subcatcount;
+    }
+
+    public String getNotes_subcatcount() {
+        return notes_subcatcount;
+    }
+
+    public void setNotes_subcatcount(String notes_subcatcount) {
+        this.notes_subcatcount = notes_subcatcount;
     }
 
     public String getNotes_sub_id() {

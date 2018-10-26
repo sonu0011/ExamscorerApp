@@ -3,6 +3,7 @@
 
     <item
         android:gravity="center">
+
         <shape android:shape="rectangle">
             <size android:width="1dp" />
             <solid android:color="#64000000" />

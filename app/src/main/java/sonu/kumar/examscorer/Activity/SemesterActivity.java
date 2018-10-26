@@ -1,5 +1,6 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +53,6 @@ public class SemesterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_semester);
 
-        MobileAds.initialize(SemesterActivity.this,"ca-app-pub-9104180069881340~6525361897");
         adView =findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
@@ -115,6 +115,7 @@ public class SemesterActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        final ProgressDialog dialog = new Constants().showDialog(SemesterActivity.this);
         StringRequest stringRequest =new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
@@ -139,6 +140,7 @@ public class SemesterActivity extends AppCompatActivity {
 
                             }semAdapter =new SemAdapter(list,getApplicationContext(),branch_id);
                             recyclerView.setAdapter(semAdapter);
+                            dialog.dismiss();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

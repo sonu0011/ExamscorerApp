@@ -2,6 +2,7 @@ package sonu.kumar.examscorer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -72,6 +73,8 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Viewhold
             code =itemView.findViewById(R.id.sub_code);
             heading.setTypeface(custom_font,Typeface.BOLD);
             code.setTypeface(custom_font,Typeface.BOLD);
+            name.setTypeface(custom_font);
+            code.setTextColor(Color.BLACK);
         }
 
         public void getData(int position) {
@@ -81,6 +84,8 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Viewhold
                 public void onClick(View view) {
                     Intent intent =new Intent(context, PapersActivity.class);
                     intent.putExtra("sub_code",model.getSub_code());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(intent);
                 }
             });

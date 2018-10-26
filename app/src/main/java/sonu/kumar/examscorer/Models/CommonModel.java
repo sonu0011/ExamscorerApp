@@ -13,14 +13,23 @@ public class CommonModel {
     int paper_id;
     String sp_title,sp_link,sp_code;
     int supply_papers,notes_sub_cat;
-    String notes_cat_id,notes_cat_image,notes_cat_title;
+    String notes_cat_id,notes_cat_image,notes_cat_title,notes_count;
 
 
-    public CommonModel(int notes_sub_cat, String notes_cat_id, String notes_cat_image, String notes_cat_title) {
+    public CommonModel(int notes_sub_cat, String notes_cat_id, String notes_cat_image, String notes_cat_title,String notes_count) {
         this.notes_sub_cat = notes_sub_cat;
         this.notes_cat_id = notes_cat_id;
         this.notes_cat_image = notes_cat_image;
         this.notes_cat_title = notes_cat_title;
+        this.notes_count =notes_count;
+    }
+
+    public String getNotes_count() {
+        return notes_count;
+    }
+
+    public void setNotes_count(String notes_count) {
+        this.notes_count = notes_count;
     }
 
     public String getNotes_cat_id() {

@@ -45,7 +45,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="32dp"
-        android:layout_marginEnd="46dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginRight="46dp"
         android:src="@drawable/white_dra" />
 

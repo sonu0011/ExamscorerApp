@@ -1,5 +1,6 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -11,6 +12,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,12 +48,16 @@ public class FavouritesActivity extends AppCompatActivity {
     List<CommonModel> list;
     private SharedPreferences sharedPreferences;
     private CheckInternetConnection checkInternetConnection;
+    ImageView nofav;
+    TextView nofavtext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
         Log.d(TAG, "onCreate: ");
+        nofav =findViewById(R.id.nofav);
+        nofavtext =findViewById(R.id.nofavtext);
         coordinatorLayout =findViewById(R.id.favcordinate);
         sharedPreferences =getSharedPreferences(Constants.SHARED_KEY,MODE_PRIVATE);
         getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
@@ -95,15 +102,19 @@ public class FavouritesActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         Log.d(TAG, "onStart: ");
+        final ProgressDialog dialog = new Constants().showDialog(FavouritesActivity.this);
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d(TAG, "onResponse: "+response);
+                        dialog.dismiss();
                         if (response.equals("[]")){
-                            Snackbar.make(coordinatorLayout,"No favourites found",Snackbar.LENGTH_LONG).show();
+//                            Snackbar.make(coordinatorLayout,"No favourites found",Snackbar.LENGTH_LONG).show();
                             //Toast.makeText(FavouritesActivity.this, "No favourites found", Toast.LENGTH_SHORT).show();
+                            nofav.setVisibility(View.VISIBLE);
+                            nofavtext.setVisibility(View.VISIBLE);
                             return;
                         }
                         Log.d(TAG, "onResponse: " + response);
@@ -124,6 +135,7 @@ public class FavouritesActivity extends AppCompatActivity {
                             }
                             paperAdapter = new PaperAdapter(1,FavouritesActivity.this,list);
                             recyclerView.setAdapter(paperAdapter);
+                            dialog.dismiss();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

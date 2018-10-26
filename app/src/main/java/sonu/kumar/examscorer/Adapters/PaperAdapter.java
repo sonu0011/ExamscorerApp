@@ -208,6 +208,8 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                     intent.putExtra(Intent.EXTRA_TEXT, model.getPaper_link());
 //                   intent.putExtra(Intent.EXTRA_CC,"fghsdja");
 //                   intent.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id=com.agbe.jaquar");
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(Intent.createChooser(intent, "Share Via"));
 
                 }
@@ -216,6 +218,8 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                 @Override
                 public void onClick(View view) {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getPaper_link()));
+                    browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(Intent.createChooser(browserIntent, "Download"));
 
 

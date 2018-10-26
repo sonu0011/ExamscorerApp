@@ -2,6 +2,7 @@ package sonu.kumar.examscorer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -65,12 +66,14 @@ public class NotesCategoryAdapter extends RecyclerView.Adapter<NotesCategoryAdap
             AnotherCommonModel model = list1.get(position);
             Glide.with(context).load(model.getNotes_subcat_image()).into(holder.notes_cat_image);
             holder.notes_sub_cat_title.setText(model.getNotes_sub_cat_title());
+            holder.notes_cat_count.setText(model.getNotes_subcatcount());
             holder.getData(position);
         }
         else {
             Log.d(TAG, "onBindViewHolder: ");
             CommonModel model = list.get(position);
             Glide.with(context).load(model.getNotes_cat_image()).into(holder.notes_cat_image);
+            holder.notes_cat_count.setText(model.getNotes_count());
             holder.getData(position);
         }
 
@@ -91,12 +94,15 @@ public class NotesCategoryAdapter extends RecyclerView.Adapter<NotesCategoryAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView notes_cat_image;
         TextView notes_cat_count,notes_sub_cat_title;
+
         public ViewHolder(View itemView) {
             super(itemView);
             notes_cat_image =itemView.findViewById(R.id.notes_cat_image);
             notes_cat_count =itemView.findViewById(R.id.notes_count_text);
             if (i==1){
                 notes_sub_cat_title =itemView.findViewById(R.id.notes_subcat_title);
+                notes_sub_cat_title.setTextColor(Color.BLACK);
+
             }
         }
 
@@ -109,6 +115,9 @@ public class NotesCategoryAdapter extends RecyclerView.Adapter<NotesCategoryAdap
                         Intent intent =new Intent(context, NotesSubCategory.class);
                         intent.putExtra("notes_id",data.getNotes_cat_id());
                         intent.putExtra("notes_title",data.getNotes_cat_title());
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                         context.startActivity(intent);
                     }
                 });
@@ -126,6 +135,8 @@ public class NotesCategoryAdapter extends RecyclerView.Adapter<NotesCategoryAdap
                         intent.putExtra("cat_id", cat_id);
                         intent.putExtra("subcat_id", subcat_id);
                         intent.putExtra("subcat_title", notes_subcat_title);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                         context.startActivity(intent);
 
                     }

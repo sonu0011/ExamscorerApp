@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.net.wifi.hotspot2.pps.HomeSp;
@@ -28,6 +29,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,6 +57,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ProgressDialog progressDialog;
     int user_id;
     String user_name,user_image,user_email;
+    private AdView adView;
+    Snackbar snackbar;
 
 
 
@@ -61,10 +66,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        adView =findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        adView.loadAd(adRequest);
         //Register Broadcast Receiver
         Log.d(TAG, "onCreate: ");
-
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         checkInternetConnection = new CheckInternetConnection();
         registerReceiver(checkInternetConnection, intentFilter);
@@ -106,17 +113,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
+
         switch (view.getId()){
             case R.id.signin_button:
                     if (email.getText().toString().trim().isEmpty() ||
                             password.getText().toString().trim().isEmpty()){
-                        Snackbar.make(coordinatorLayout,"All fields are required",Snackbar.LENGTH_SHORT).show();
+                        snackbar = Snackbar.make(coordinatorLayout,"All fields are required",Snackbar.LENGTH_SHORT);
+                        View snackbarView = snackbar.getView();
+                        TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                        textView.setTextColor(Color.WHITE);
+                        snackbar.show();
                     }
                     else {
-                        progressDialog.setTitle("Loging");
-                        progressDialog.setMessage("Please Wait..");
-                        progressDialog.setCanceledOnTouchOutside(false);
-                        progressDialog.show();
+                        final ProgressDialog dialog = new Constants().showDialog(LoginActivity.this);
                         StringRequest stringRequest =new StringRequest(StringRequest.Method.POST,
                                 Constants.Request_Url,
                                 new Response.Listener<String>() {
@@ -124,8 +133,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     public void onResponse(String response) {
                                         Log.d(TAG, "onResponse: "+response);
                                         if (response.equals("[]")){
-                                            progressDialog.dismiss();
-                                            Snackbar.make(coordinatorLayout,"Invalid email address or password",Snackbar.LENGTH_SHORT).show();
+                                            dialog.dismiss();
+                                            snackbar = Snackbar.make(coordinatorLayout,"Invalid email address or password",Snackbar.LENGTH_SHORT);
+                                            View snackbarView = snackbar.getView();
+                                            TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                            textView.setTextColor(Color.WHITE);
+                                            snackbar.show();
                                         }
                                         if (!response.equals("[]")){
                                             JSONArray jsonArray = null;
@@ -184,7 +197,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 e.printStackTrace();
                                             }
 
-                                            progressDialog.dismiss();
+                                            dialog.dismiss();
                                             startActivity(new Intent(LoginActivity.this,BranchActivity.class));
                                             finish();
 

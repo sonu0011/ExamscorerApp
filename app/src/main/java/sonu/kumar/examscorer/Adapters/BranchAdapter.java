@@ -43,7 +43,9 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CommonModel model = list.get(position);
-        Glide.with(context).load(model.getBrancg_image()).into(holder.branch_image);
+        Glide.with(context).
+                load(model.getBrancg_image())
+                .into(holder.branch_image);
         holder.branch_title.setText(model.getBranch_heading());
         holder.getData(position);
         if(position >lastPosition) {
@@ -79,6 +81,7 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.ViewHolder
                     Intent intent =new Intent(context, SemesterActivity.class);
                     intent.putExtra("branch_id",model.getBranch_id());
                     intent.putExtra("branch_title",model.getBranch_heading());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
 
                 }

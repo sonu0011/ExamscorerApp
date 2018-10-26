@@ -1,10 +1,12 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
@@ -24,6 +26,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -33,6 +36,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,72 +70,89 @@ import sonu.kumar.examscorer.Utills.CustomTypefaceSpan;
 import sonu.kumar.examscorer.Utills.Mysingleton;
 
 public class BranchActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-android.support.v7.widget.Toolbar toolbar;
-DrawerLayout drawerLayoutl;
-FrameLayout frameLayout;
-NavigationView navigationView;
-Button selectoption;
- ImageView home_search_btn;
-RelativeLayout relativeLayout;
-CircleImageView profile_image;
-TextView user_name,user_email;
-TextView favcout;
-int user_id;
-String selected_option;
-EditText home_search_editext;
-public static final String TAG ="HOmeActivity";
-String shared_image_url,shared_user_name,shared_user_email;
-SharedPreferences sharedPreferences;
+    android.support.v7.widget.Toolbar toolbar;
+    DrawerLayout drawerLayoutl;
+    FrameLayout frameLayout;
+    NavigationView navigationView;
+    Button selectoption;
+    ImageView home_search_btn;
+    RelativeLayout relativeLayout;
+    CircleImageView profile_image;
+    TextView user_name, user_email;
+    TextView favcout;
+    int user_id;
+    String selected_option;
+    EditText home_search_editext;
+    public static final String TAG = "HOmeActivity";
+    String shared_image_url, shared_user_name, shared_user_email;
+    SharedPreferences sharedPreferences;
     private CheckInternetConnection checkInternetConnection;
     CoordinatorLayout coordinatorLayout;
+    RadioButton sub, code;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (checkInternetConnection !=null){
+        if (checkInternetConnection != null) {
             unregisterReceiver(checkInternetConnection);
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_branch);
-        navigationView = findViewById(R.id.navigationview);
-        home_search_btn =findViewById(R.id.homesearch_btn);
-        home_search_editext =findViewById(R.id.home_paper_search);
-        coordinatorLayout =findViewById(R.id.branch_coor);
-        sharedPreferences =getSharedPreferences(Constants.SHARED_KEY,MODE_PRIVATE);
-        shared_image_url = sharedPreferences.getString(Constants.LOGIN_USER_IMAGE,null);
-        shared_user_name =sharedPreferences.getString(Constants.LOGIN_USER_Name,null);
-        shared_user_email =sharedPreferences.getString(Constants.LOGIN_USER_EMAIL,null);
-        user_id =sharedPreferences.getInt(Constants.LOGIN_USER_ID,0);
 
-        Log.d(TAG, "onCreate: image urlo "+shared_image_url);
-        Log.d(TAG, "onCreate: username"+shared_user_name);
-        Log.d(TAG, "onCreate: userid"+user_id);
+        sub = findViewById(R.id.subjectradionbutton);
+        code = findViewById(R.id.subcoderadiobutton);
+        navigationView = findViewById(R.id.navigationview);
+
+        Menu menu =navigationView.getMenu();
+        MenuItem item =menu.findItem(R.id.followus);
+
+
+        View view = LayoutInflater.from(BranchActivity.this).inflate(R.layout.text,null);
+        item.setActionView(view);
+
+
+        home_search_btn = findViewById(R.id.homesearch_btn);
+        home_search_editext = findViewById(R.id.home_paper_search);
+        coordinatorLayout = findViewById(R.id.branch_coor);
+        sharedPreferences = getSharedPreferences(Constants.SHARED_KEY, MODE_PRIVATE);
+        shared_image_url = sharedPreferences.getString(Constants.LOGIN_USER_IMAGE, null);
+        shared_user_name = sharedPreferences.getString(Constants.LOGIN_USER_Name, null);
+        shared_user_email = sharedPreferences.getString(Constants.LOGIN_USER_EMAIL, null);
+        user_id = sharedPreferences.getInt(Constants.LOGIN_USER_ID, 0);
+
+
+        Log.d(TAG, "onCreate: image urlo " + shared_image_url);
+        Log.d(TAG, "onCreate: username" + shared_user_name);
+        Log.d(TAG, "onCreate: userid" + user_id);
 
 
         relativeLayout = navigationView.getHeaderView(0).findViewById(R.id.headerView);
-        profile_image =navigationView.getHeaderView(0).findViewById(R.id.profile_image);
-        user_name =navigationView.getHeaderView(0).findViewById(R.id.profiel_user_name);
-        user_email =navigationView.getHeaderView(0).findViewById(R.id.profile_email_address);
+        profile_image = navigationView.getHeaderView(0).findViewById(R.id.profile_image);
+        user_name = navigationView.getHeaderView(0).findViewById(R.id.profiel_user_name);
+        user_email = navigationView.getHeaderView(0).findViewById(R.id.profile_email_address);
 
-        toolbar =findViewById(R.id.toolbar);
-        frameLayout =findViewById(R.id.framelauout);
-        selectoption =findViewById(R.id.select_option_btn);
+        user_email.setTextColor(Color.WHITE);
+        user_name.setTextColor(Color.WHITE);
+        toolbar = findViewById(R.id.toolbar);
+        frameLayout = findViewById(R.id.framelauout);
+        //selectoption =findViewById(R.id.select_option_btn);
         setSupportActionBar(toolbar);
-        drawerLayoutl= findViewById(R.id.drawerlayout);
+        drawerLayoutl = findViewById(R.id.drawerlayout);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
-                drawerLayoutl,toolbar,R.string.navigation_drawer_open,
+                drawerLayoutl, toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close
         );
 
         drawerLayoutl.addDrawerListener(actionBarDrawerToggle);
         navigationView.setNavigationItemSelectedListener(this);
         actionBarDrawerToggle.syncState();
-        getSupportFragmentManager().beginTransaction().replace(R.id.framelauout,new HomeFragment())
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelauout, new HomeFragment())
                 .commit();
         navigationView.setCheckedItem(R.id.nav_home);
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -151,22 +172,22 @@ SharedPreferences sharedPreferences;
 
         relativeLayout.setOnClickListener(
                 new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BranchActivity.this,ProfileActivity.class));
-            }
-        });
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(BranchActivity.this, ProfileActivity.class));
+                    }
+                });
         home_search_editext.clearFocus();
 
 
         Menu m = navigationView.getMenu();
-        for (int i=0;i<m.size();i++) {
+        for (int i = 0; i < m.size(); i++) {
             MenuItem mi = m.getItem(i);
 
             //for aapplying a font to subMenu ...
             SubMenu subMenu = mi.getSubMenu();
-            if (subMenu!=null && subMenu.size() >0 ) {
-                for (int j=0; j <subMenu.size();j++) {
+            if (subMenu != null && subMenu.size() > 0) {
+                for (int j = 0; j < subMenu.size(); j++) {
                     MenuItem subMenuItem = subMenu.getItem(j);
                     applyFontToMenuItem(subMenuItem);
                 }
@@ -178,27 +199,27 @@ SharedPreferences sharedPreferences;
         sendToken();
 
     }
+
     public void sendToken() {
-        Intent intent =new Intent(this, MyFirebaseInstanceIDService.class);
+        Intent intent = new Intent(this, MyFirebaseInstanceIDService.class);
         startService(intent);
         final String token = SharedPreference.getInstance(this).getDeviceToken();
-        Log.d(TAG, "sendToken: "+token);
+        Log.d(TAG, "sendToken: " + token);
         if (Constants.device_id == null) {
             Log.e(TAG, "sendToken: token not generated");
             return;
-        }
-        else {
-            Log.e(TAG, "sendToken: token generated is "+token);
+        } else {
+            Log.e(TAG, "sendToken: token generated is " + token);
         }
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_REGISTER_DEVICE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e(TAG, "onResponse: token response "+response);
+                        Log.e(TAG, "onResponse: token response " + response);
                         try {
                             JSONObject obj = new JSONObject(response);
-                            Log.d(TAG, "onResponse: "+obj.getString("message"));
+                            Log.d(TAG, "onResponse: " + obj.getString("message"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -207,16 +228,16 @@ SharedPreferences sharedPreferences;
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e(TAG, "onErrorResponse: token response"+error.toString());
+                        Log.e(TAG, "onErrorResponse: token response" + error.toString());
 
                     }
                 }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                String email  =sharedPreferences.getString(Constants.LOGIN_USER_EMAIL,null);
+                String email = sharedPreferences.getString(Constants.LOGIN_USER_EMAIL, null);
 
-                Log.d(TAG, "getParams: "+email +token);
+                Log.d(TAG, "getParams: " + email + token);
                 Map<String, String> params = new HashMap<>();
                 params.put("email", email);
                 params.put("token", token);
@@ -225,10 +246,11 @@ SharedPreferences sharedPreferences;
         };
         Mysingleton.getInstance(this).addToRequestQuee(stringRequest);
     }
+
     private void applyFontToMenuItem(MenuItem mi) {
         Typeface font = Typeface.createFromAsset(getAssets(), "dark.ttf");
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
-        mNewTitle.setSpan(new CustomTypefaceSpan("" , font), 0 , mNewTitle.length(),  Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mi.setTitle(mNewTitle);
     }
 
@@ -238,30 +260,47 @@ SharedPreferences sharedPreferences;
         home_search_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (home_search_editext.getText().toString().trim().isEmpty()){
+                if (home_search_editext.getText().toString().trim().isEmpty()) {
                     Toast.makeText(BranchActivity.this, "Enter some keyword for search", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (selectoption.getText().toString().equals("   Please Select")){
-                    Toast.makeText(BranchActivity.this, "Please select any option", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if (selectoption.getText().toString().equals("   Please Select")){
+//                    Toast.makeText(BranchActivity.this, "Please select any option", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+
+
                 else {
-                    StringRequest sr =new StringRequest(StringRequest.Method.POST,
+                    final ProgressDialog dialog = new Constants().showDialog(BranchActivity.this);
+                    if (sub.isChecked()) {
+                        selected_option = "Subject";
+                    }
+                    if (code.isChecked()) {
+                        selected_option = "Subject code";
+                    }
+                    StringRequest sr = new StringRequest(StringRequest.Method.POST,
                             Constants.Request_Url,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
                                     Log.d(TAG, "onResponse: ");
                                     if (response.equals("[]")) {
-                                        Snackbar.make(coordinatorLayout,"No result found, try again !!",Snackbar.LENGTH_SHORT).show();
+
+                                        dialog.dismiss();
+
+                                        Snackbar snackbar = Snackbar.make(coordinatorLayout, "No result found, try again !!", Snackbar.LENGTH_SHORT);
+                                        snackbar.show();
+                                        View snackbarView = snackbar.getView();
+                                        TextView textView = (TextView) snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+                                        textView.setTextColor(Color.WHITE);
+                                        snackbar.show();
                                         return;
 
-                                    }
-                                    else {
-                                        Intent intent =new Intent(BranchActivity.this,SearchedResultsActivity.class);
-                                        intent.putExtra("selectedoption",selected_option);
-                                        intent.putExtra("keyword",home_search_editext.getText().toString());
+                                    } else {
+                                        dialog.dismiss();
+                                        Intent intent = new Intent(BranchActivity.this, SearchedResultsActivity.class);
+                                        intent.putExtra("selectedoption", selected_option);
+                                        intent.putExtra("keyword", home_search_editext.getText().toString());
                                         startActivity(intent);
                                     }
 
@@ -274,19 +313,17 @@ SharedPreferences sharedPreferences;
                                 public void onErrorResponse(VolleyError error) {
 
                                 }
-                            }){
+                            }) {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> map = new HashMap<>();
                             map.put("seachedresult", "yes");
-                            map.put("keyword",home_search_editext.getText().toString());
-                            map.put("selectedoption",selected_option);
+                            map.put("keyword", home_search_editext.getText().toString());
+                            map.put("selectedoption", selected_option);
                             return map;
                         }
                     };
                     Mysingleton.getInstance(BranchActivity.this).addToRequestQuee(sr);
-
-
 
 
                 }
@@ -296,19 +333,18 @@ SharedPreferences sharedPreferences;
 
     @Override
     public void onBackPressed() {
-        if (drawerLayoutl.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayoutl.isDrawerOpen(GravityCompat.START)) {
             drawerLayoutl.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.profile_setting:
-                startActivity(new Intent(BranchActivity.this,ProfileActivity.class));
+                startActivity(new Intent(BranchActivity.this, ProfileActivity.class));
                 break;
             case R.id.sign_out:
                 new Constants().ShowLogoutDialog(BranchActivity.this);
@@ -320,25 +356,25 @@ SharedPreferences sharedPreferences;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_menu,menu);
+        getMenuInflater().inflate(R.menu.home_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framelauout,new HomeFragment())
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelauout, new HomeFragment())
                         .commit();
                 break;
             case R.id.nav_notes:
-                startActivity(new Intent(BranchActivity.this,NotesActivity.class));
+                startActivity(new Intent(BranchActivity.this, NotesActivity.class));
 
                 break;
 
             case R.id.nav_about_us:
-                startActivity(new Intent(BranchActivity.this,AboutActivity.class));
+                startActivity(new Intent(BranchActivity.this, AboutActivity.class));
 
                 break;
             case R.id.nav_reappearpapers:
@@ -346,37 +382,37 @@ SharedPreferences sharedPreferences;
                 break;
 
             case R.id.nav_share:
-                Intent intent =new Intent(Intent.ACTION_VIEW);
-                intent.putExtra(Intent.EXTRA_TEXT,"https://play.google.com/store/apps/details?id=com.agbe.jaquar");
-                startActivity(Intent.createChooser(intent,"Share Via"));
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.agbe.jaquar");
+                startActivity(Intent.createChooser(intent, "Share Via"));
 
                 break;
             case R.id.nav_facebook:
-                Intent intent1 =new Intent(Intent.ACTION_VIEW);
+                Intent intent1 = new Intent(Intent.ACTION_VIEW);
                 intent1.setData(Uri.parse("https://www.facebook.com/ExamScorer-223627784852151/"));
-              startActivity(intent1);
+                startActivity(intent1);
 
                 break;
             case R.id.nav_twitter:
-                Intent intent2 =new Intent(Intent.ACTION_VIEW);
+                Intent intent2 = new Intent(Intent.ACTION_VIEW);
                 intent2.setData(Uri.parse("https://twitter.com/skr3704"));
                 startActivity(intent2);
 
                 break;
             case R.id.nav_instagram:
-                Intent intent3 =new Intent(Intent.ACTION_VIEW);
+                Intent intent3 = new Intent(Intent.ACTION_VIEW);
                 intent3.setData(Uri.parse("https://www.instagram.com/examscorer/"));
                 startActivity(intent3);
 
                 break;
             case R.id.nav_youtube:
-                Intent intent4 =new Intent(Intent.ACTION_VIEW);
+                Intent intent4 = new Intent(Intent.ACTION_VIEW);
                 intent4.setData(Uri.parse("https://www.youtube.com/channel/UCNPqfWK6Cd4ksdrhkQB7B9w"));
                 startActivity(intent4);
 
                 break;
             case R.id.nav_fav:
-                startActivity(new Intent(BranchActivity.this,FavouritesActivity.class));
+                startActivity(new Intent(BranchActivity.this, FavouritesActivity.class));
                 break;
 
         }
@@ -384,41 +420,42 @@ SharedPreferences sharedPreferences;
         return true;
     }
 
-    public void SelectOptions(View view) {
-        PopupMenu popupMenu =new PopupMenu(this,view);
-        popupMenu.inflate(R.menu.select_option_menu);
-        popupMenu.show();
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.option_subject:
-                        selectoption.setText("   Subject");
-                        selected_option ="Subject";
-                        return true;
-                    case R.id.option_sub_code:
-                        selectoption.setText("   Subject code");
-                        selected_option ="Subject code";
-                        return true;
-                     default:
-                         return false;
-                }
-            }
-        });
-
-    }
+//    public void SelectOptions(View view) {
+//        PopupMenu popupMenu = new PopupMenu(this, view);
+//        popupMenu.inflate(R.menu.select_option_menu);
+//        popupMenu.show();
+//        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.option_subject:
+//                        selectoption.setText("   Subject");
+//                        selected_option = "Subject";
+//                        return true;
+//                    case R.id.option_sub_code:
+//                        selectoption.setText("   Subject code");
+//                        selected_option = "Subject code";
+//                        return true;
+//                    default:
+//                        return false;
+//                }
+//            }
+//        });
+//
+//    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        favcout =(TextView) MenuItemCompat.getActionView(navigationView.getMenu().
+        favcout = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().
                 findItem(R.id.nav_fav));
-        StringRequest stringRequest =new StringRequest(StringRequest.Method.POST,
+
+        StringRequest stringRequest = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d(TAG, "onResponse: "+response);
+                        Log.d(TAG, "onResponse: " + response);
                         favcout.setGravity(Gravity.CENTER_VERTICAL);
                         favcout.setTypeface(null, Typeface.BOLD);
                         favcout.setTextColor(Color.RED);
@@ -432,11 +469,11 @@ SharedPreferences sharedPreferences;
                     public void onErrorResponse(VolleyError error) {
 
                     }
-                }){
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> map =new HashMap<>();
-                map.put("fav_count","yes");
+                Map<String, String> map = new HashMap<>();
+                map.put("fav_count", "yes");
                 map.put("user_id", String.valueOf(user_id));
                 return map;
             }
@@ -497,22 +534,22 @@ SharedPreferences sharedPreferences;
 //            }
 //        };
 //        Mysingleton.getInstance(BranchActivity.this).addToRequestQuee(stringRequest1);
-        if (shared_user_name !=null) {
+        if (shared_user_name != null) {
             if (shared_user_name != null) {
                 user_name.setText("Hi, " + shared_user_name);
 
 
             }
         }
-        if (shared_image_url !=null){
-            if (!shared_image_url.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")){
+        if (shared_image_url != null) {
+            if (!shared_image_url.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")) {
                 Glide.with(BranchActivity.this).load(shared_image_url).into(profile_image);
 
             }
         }
 
-        if (shared_user_email !=null){
-             user_email.setText(shared_user_email);
+        if (shared_user_email != null) {
+            user_email.setText(shared_user_email);
 
         }
     }

@@ -2,6 +2,7 @@ package sonu.kumar.examscorer.Fragments;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import sonu.kumar.examscorer.R;
@@ -19,6 +21,7 @@ import sonu.kumar.examscorer.R;
 public class ContactUsFragment extends Fragment implements  View.OnClickListener {
     View view;
     ImageView msg1,smg2,email,website;
+    TextView phone_heading,email_heading,website_heading;
 
 
     public ContactUsFragment() {
@@ -36,6 +39,16 @@ public class ContactUsFragment extends Fragment implements  View.OnClickListener
         smg2 =view.findViewById(R.id.message_phone2);
         email =view.findViewById(R.id.email_icon);
         website =view.findViewById(R.id.wesite_visite);
+
+        phone_heading =view.findViewById(R.id.phone_title);
+
+        email_heading =view.findViewById(R.id.email_title);
+        website_heading =view.findViewById(R.id.website_title);
+        Typeface typeface =Typeface.createFromAsset(getContext().getAssets(),"dark.ttf");
+        website_heading.setTypeface(typeface,Typeface.BOLD);
+        email_heading.setTypeface(typeface,Typeface.BOLD);
+        phone_heading.setTypeface(typeface,Typeface.BOLD);
+
 
         msg1.setOnClickListener(this);
         smg2.setOnClickListener(this);

@@ -119,7 +119,6 @@
             android:maxLength="20"
             android:padding="8dp"
             android:textColorHint="#A9A9A9"
-            android:textStyle="bold"
             android:visibility="visible" />
 
         <View

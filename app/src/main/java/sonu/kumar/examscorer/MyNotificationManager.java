@@ -44,8 +44,8 @@ public class MyNotificationManager {
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
 
-        NotificationManagerCompat compat =NotificationManagerCompat.from(mCtx);
-        Notification notification =new NotificationCompat.Builder(mCtx, App.CHANNLE_ID)
+        NotificationManagerCompat compat = NotificationManagerCompat.from(mCtx);
+        Notification notification = new NotificationCompat.Builder(mCtx, App.CHANNLE_ID)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentIntent(resultPendingIntent)
                 .setAutoCancel(true)
@@ -61,61 +61,10 @@ public class MyNotificationManager {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build();
-        compat.notify(1,notification);
+        compat.notify(1, notification);
 
 
-
-//        NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();
-//        bigPictureStyle.setBigContentTitle(title);
-//        bigPictureStyle.setSummaryText(Html.fromHtml(message).toString());
-//        bigPictureStyle.bigPicture(getBitmapFromURL(url));
-//        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mCtx);
-//        Notification notification;
-//        notification = mBuilder.setSmallIcon(R.mipmap.ic_launcher).setTicker(title).setWhen(0)
-//                .setAutoCancel(true)
-//                .setContentIntent(resultPendingIntent)
-//                .setContentTitle(title)
-//                .setStyle(bigPictureStyle)
-//                .setSmallIcon(R.mipmap.ic_launcher)
-//                .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher))
-//                .setContentText(message)
-//                .build();
-//
-//        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-//
-//        NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
-//        notificationManager.notify(ID_BIG_NOTIFICATION, notification);
     }
-
-    //the method will show a small notification
-    //parameters are title for message title, message for message text and an intent that will open
-    //when you will tap on the notification
-//    public void showSmallNotification(String title, String message, Intent intent) {
-//        PendingIntent resultPendingIntent =
-//                PendingIntent.getActivity(
-//                        mCtx,
-//                        ID_SMALL_NOTIFICATION,
-//                        intent,
-//                        PendingIntent.FLAG_UPDATE_CURRENT
-//                );
-//
-//
-//        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mCtx);
-//        Notification notification;
-//        notification = mBuilder.setSmallIcon(R.mipmap.ic_launcher).setTicker(title).setWhen(0)
-//                .setAutoCancel(true)
-//                .setContentIntent(resultPendingIntent)
-//                .setContentTitle(title)
-//                .setSmallIcon(R.mipmap.ic_launcher)
-//                .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.mipmap.ic_launcher))
-//                .setContentText(message)
-//                .build();
-//
-//        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-//
-//        NotificationManager notificationManager = (NotificationManager) mCtx.getSystemService(Context.NOTIFICATION_SERVICE);
-//        notificationManager.notify(ID_SMALL_NOTIFICATION, notification);
-//    }
     public void showSmallNotification(String title, String message, Intent intent) {
         PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
@@ -138,7 +87,7 @@ public class MyNotificationManager {
         compat.notify(1,notification);
     }
 
-    //The method will return Bitmap from an image URL
+
     private Bitmap getBitmapFromURL(String strURL) {
         try {
             URL url = new URL(strURL);

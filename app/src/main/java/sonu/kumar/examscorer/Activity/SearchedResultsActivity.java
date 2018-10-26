@@ -98,9 +98,7 @@ public class SearchedResultsActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        progressDialog.setMessage("Loading..");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
+        final ProgressDialog dialog = new Constants().showDialog(SearchedResultsActivity.this);
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
@@ -131,14 +129,14 @@ public class SearchedResultsActivity extends AppCompatActivity {
                                         list.add(new CommonModel(title, link, paper_id, branch_name));
                                     }
                                 }
-                                paperAdapter = new PaperAdapter(getApplicationContext(), sub_code, list, coordinatorLayout, 2);
+                                paperAdapter = new PaperAdapter(SearchedResultsActivity.this, sub_code, list, coordinatorLayout, 2);
                                 recyclerView.setAdapter(paperAdapter);
+                                dialog.dismiss();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        progressDialog.dismiss();
                     }
                 }, new Response.ErrorListener() {
             @Override

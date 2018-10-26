@@ -1,5 +1,6 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.design.widget.CoordinatorLayout;
@@ -124,6 +125,7 @@ public class ReappearsActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         Log.d(TAG, "onStart: ");
+        final ProgressDialog dialog = new Constants().showDialog(ReappearsActivity.this);
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
@@ -147,8 +149,9 @@ public class ReappearsActivity extends AppCompatActivity {
 
 
                             }
-                            reappearAdapter = new ReappearAdapter(list,getApplicationContext());
+                            reappearAdapter = new ReappearAdapter(list,ReappearsActivity.this);
                             recyclerView.setAdapter(reappearAdapter);
+                            dialog.dismiss();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

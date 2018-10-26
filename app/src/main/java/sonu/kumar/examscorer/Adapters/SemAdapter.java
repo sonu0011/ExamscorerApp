@@ -87,6 +87,8 @@ public class SemAdapter extends RecyclerView.Adapter<SemAdapter.Viewholder> {
                     intent.putExtra("branch_id",branch_id);
                     intent.putExtra("sem_id",model.getSem_id());
                     intent.putExtra("sem_title",model.getSem_title());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(intent);
                 }
             });

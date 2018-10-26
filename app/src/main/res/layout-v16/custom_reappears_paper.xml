@@ -23,11 +23,7 @@
             android:fontFamily="@font/custom_font"
             android:textStyle="bold"
             android:textColor="#000"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        </LinearLayout>
         <TextView
             android:background="#790d1eb6"
             android:textColor="#fff"
@@ -37,9 +33,9 @@
             android:text="Basic Electrical And Electronics Engineering (Final)"
             android:layout_below="@+id/reappear_sub_code"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:fontFamily="@font/custom_font_dark"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:padding="20dp"
             />
         <LinearLayout

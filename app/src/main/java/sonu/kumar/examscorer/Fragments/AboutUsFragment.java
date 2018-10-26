@@ -1,11 +1,13 @@
 package sonu.kumar.examscorer.Fragments;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import sonu.kumar.examscorer.R;
 
@@ -13,6 +15,8 @@ import sonu.kumar.examscorer.R;
  * A simple {@link Fragment} subclass.
  */
 public class AboutUsFragment extends Fragment {
+    View view;
+    TextView mission,heading,about,aboutpar;
 
 
     public AboutUsFragment() {
@@ -24,7 +28,20 @@ public class AboutUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about_us, container, false);
+         view = inflater.inflate(R.layout.fragment_about_us, container, false);
+         mission =view.findViewById(R.id.our_mission);
+         heading = view.findViewById(R.id.about_heading);
+         about = view.findViewById(R.id.about_about);
+        Typeface custom_font = Typeface.createFromAsset(getContext().getAssets(),  "roboto.ttf");
+        Typeface custom_fontdark = Typeface.createFromAsset(getContext().getAssets(),  "dark.ttf");
+
+        mission.setTypeface(custom_font);
+        heading.setTypeface(custom_fontdark);
+        aboutpar =view.findViewById(R.id.about_paragraph);
+
+        aboutpar.setTypeface(custom_fontdark);
+        about.setTypeface(custom_font);
+        return  view;
     }
 
 }

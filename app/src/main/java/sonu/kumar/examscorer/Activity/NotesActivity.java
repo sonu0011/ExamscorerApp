@@ -1,5 +1,6 @@
 package sonu.kumar.examscorer.Activity;
 
+import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.design.widget.CoordinatorLayout;
@@ -85,6 +86,7 @@ public class NotesActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        final ProgressDialog dialog = new Constants().showDialog(NotesActivity.this);
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
@@ -102,15 +104,17 @@ public class NotesActivity extends AppCompatActivity {
                                 String notes_cat_id = jsonObject.getString("notes_cat_id");
                                 String notes_cat_image = jsonObject.getString("notes_cat_image");
                                 String notes_cat_title =jsonObject.getString("notes_cat_title");
+                                String notes_count =jsonObject.getString("notes_count");
 
 
-                                list.add(new CommonModel( 5,notes_cat_id, notes_cat_image,notes_cat_title));
+                                list.add(new CommonModel( 5,notes_cat_id, notes_cat_image,notes_cat_title,notes_count));
 
 
                             }
                             Log.d(TAG, "onResponse: list size"+list.size());
                             notesCategoryAdapter = new NotesCategoryAdapter(list,getApplicationContext());
                             recyclerView.setAdapter(notesCategoryAdapter);
+                            dialog.dismiss();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

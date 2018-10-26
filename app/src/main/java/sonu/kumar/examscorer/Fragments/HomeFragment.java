@@ -1,14 +1,18 @@
 package sonu.kumar.examscorer.Fragments;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 
@@ -41,12 +45,10 @@ public class HomeFragment extends Fragment {
     List<CommonModel>list;
     public static final String TAG   ="HomeFragment";
     BranchAdapter branchAdapter;
-
-
+    ProgressDialog progressDialog;
     public HomeFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +58,8 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.common_recycleview);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        GridLayoutManager manager =new GridLayoutManager(getContext(),2);
+        recyclerView.setLayoutManager(manager);
         return  view;
 
     }
@@ -64,6 +67,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        final ProgressDialog dialog = new Constants().showDialog(getContext());
         StringRequest stringRequest =new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
@@ -75,7 +79,6 @@ public class HomeFragment extends Fragment {
                             jsonArray = new JSONArray(response);
                             list.clear();
                             for (int i=0;i<jsonArray.length();i++){
-
                                 Log.d(TAG, "onResponse:for loop " );
                                 JSONObject jsonObject =jsonArray.getJSONObject(i);
                                 String id = jsonObject.getString("branch_id");
@@ -84,23 +87,20 @@ public class HomeFragment extends Fragment {
                                 Log.d(TAG, "onResponse: "+id+image+headin);
                                 list.add(new CommonModel(id,image,headin));
 
-
-
                             }branchAdapter =new BranchAdapter(list,getActivity());
                             recyclerView.setAdapter(branchAdapter);
+                            dialog.dismiss();
+                           // progressDialog.dismiss();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
 
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "onErrorResponse: "+error.toString());
-
             }
         }){
             @Override

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.IntentFilter;
 import android.media.Image;
 import android.net.ConnectivityManager;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -48,6 +49,7 @@ String notes_cat_id,notes_subcat_id,notes_subcat_title;
     List<AnotherCommonModel> list;
     public static final String TAG ="ImagesActivity";
     ProgressDialog progressDialog;
+    CoordinatorLayout coordinatorLayout;
 
 
 
@@ -60,7 +62,7 @@ String notes_cat_id,notes_subcat_id,notes_subcat_title;
         notes_cat_id =getIntent().getStringExtra("cat_id");
         notes_subcat_id =getIntent().getStringExtra("subcat_id");
         notes_subcat_title =getIntent().getStringExtra("subcat_title");
-
+coordinatorLayout =findViewById(R.id.imagecoor);
         getSupportActionBar().setTitle(notes_subcat_title);
         getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -75,6 +77,7 @@ String notes_cat_id,notes_subcat_id,notes_subcat_title;
 //        recyclerView.addItemDecoration(new DividerItemDecoration(ImagesActivity.this,
 //                DividerItemDecoration.VERTICAL));
         recyclerView.setHasFixedSize(true);
+
         GridLayoutManager gridLayoutManager  =new GridLayoutManager(getApplicationContext(),3);
         recyclerView.setLayoutManager(gridLayoutManager);
 
@@ -105,10 +108,7 @@ String notes_cat_id,notes_subcat_id,notes_subcat_title;
     protected void onStart() {
         super.onStart();
 
-
-        progressDialog.setMessage("Loading..");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
+        final ProgressDialog dialog = new Constants().showDialog(ImagesActivity.this);
         StringRequest stringRequest1 = new StringRequest(StringRequest.Method.POST,
                 Constants.Request_Url,
                 new Response.Listener<String>() {
@@ -126,9 +126,9 @@ String notes_cat_id,notes_subcat_id,notes_subcat_title;
                                 String notes_downlad_title = jsonObject.getString("notes_download_title");
                                 list.add(new AnotherCommonModel(notes_downlad_link,notes_downlad_title,1));
                             }
-                            adapter = new ImagesAdapter(ImagesActivity.this, list,null);
+                            adapter = new ImagesAdapter(ImagesActivity.this, list,coordinatorLayout);
                             recyclerView.setAdapter(adapter);
-                            progressDialog.dismiss();
+                            dialog.dismiss();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

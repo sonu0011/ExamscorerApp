@@ -95,6 +95,7 @@ public class ReappearAdapter extends RecyclerView.Adapter<ReappearAdapter.ViewHo
                     intent.setType("text/plain");
 
                     intent.putExtra(Intent.EXTRA_TEXT, model.getSp_link());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     context.startActivity(Intent.createChooser(intent, "Share Via"));
 
@@ -104,6 +105,8 @@ public class ReappearAdapter extends RecyclerView.Adapter<ReappearAdapter.ViewHo
                 @Override
                 public void onClick(View view) {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(model.getSp_link()));
+                    browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     context.startActivity(Intent.createChooser(browserIntent, "Download"));
 
 
