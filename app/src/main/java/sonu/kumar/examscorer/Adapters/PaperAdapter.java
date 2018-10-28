@@ -328,11 +328,19 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                                         @Override
                                         public void onResponse(String response) {
                                             Log.d(TAG, "onResponse: delete button clicked 1 " + response);
-                                            if (response.equals("0")) {
-                                               list.remove(position);
-                                               notifyItemRemoved(position);
+//                                            if (response.equals("0")) {
+//                                               if (list !=null){
+//                                                   if (list.size() >0){
+//
+//                                                   }
+//                                               }
+//
+//
+//                                            }
+                                            list.remove(position);
 
-                                            }
+                                            notifyItemRemoved(position);
+                                            notifyItemRangeChanged(position,list.size());
 
                                         }
                                     },

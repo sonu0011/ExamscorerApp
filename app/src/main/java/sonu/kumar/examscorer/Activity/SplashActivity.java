@@ -11,6 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.testfairy.TestFairy;
+
 import sonu.kumar.examscorer.R;
 import sonu.kumar.examscorer.Utills.Constants;
 
@@ -18,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private Runnable runnable;
     private Handler handler;
-    public static final String TAG="SplashActivity";
+    public static final String TAG = "SplashActivity";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     boolean b;
@@ -28,19 +30,19 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        TestFairy.begin(this, "8229116967a373efde041c236092e45ff919b2bd");
 
-        sharedPreferences =getSharedPreferences(Constants.FIRST_TIME_LAUNCH,MODE_PRIVATE);
-        b = sharedPreferences.getBoolean(Constants.SHARED_KEY,false);
+        sharedPreferences = getSharedPreferences(Constants.FIRST_TIME_LAUNCH, MODE_PRIVATE);
+        b = sharedPreferences.getBoolean(Constants.SHARED_KEY, false);
 
         handler = new Handler();
         runnable = new Runnable() {
             @Override
             public void run() {
-                if (b){
+                if (b) {
                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
 
-                }
-                else {
+                } else {
                     startActivity(new Intent(SplashActivity.this, IntroActivity.class));
                 }
                 finish();

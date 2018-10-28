@@ -46,6 +46,8 @@ dependencies {
     compile 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
     implementation 'com.google.android.gms:play-services-ads:17.0.0'
     implementation 'com.github.chrisbanes:PhotoView:1.2.6'
+    implementation 'testfairy:testfairy-android-sdk:1.+@aar'
+
 
 
 

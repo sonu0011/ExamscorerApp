@@ -224,7 +224,10 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.d(TAG, "onClick: ");
 
                 if (profile_image_from_shared != null) {
-                    if (profile_image_from_shared.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")) {
+                    if (
+                            //profile_image_from_shared.equals(Constants.localhost+"/ExamscorerApp/API/Uploads/")
+                            profile_image_from_shared.equals(Constants.server+"/API/Uploads/")
+                            ) {
                         if (ImageUri == null) {
                             Toast.makeText(ProfileActivity.this, "Please select a profile image", Toast.LENGTH_SHORT).show();
                             return;
@@ -271,7 +274,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                 }
                 if (profile_image_from_shared != null) {
-                    if (!profile_image_from_shared.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/") && ImageUri == null) {
+                    if (!
+                            //profile_image_from_shared.equals(Constants.localhost+"/ExamscorerApp/API/Uploads/") && ImageUri == null) {
+                            profile_image_from_shared.equals(Constants.server+"/API/Uploads/") && ImageUri == null) {
                         if (update_user_name.getText().toString().trim().isEmpty()) {
                             Toast.makeText(ProfileActivity.this, "Enter your name", Toast.LENGTH_SHORT).show();
                         } else {
@@ -329,7 +334,10 @@ public class ProfileActivity extends AppCompatActivity {
                 }
                 if (profile_image_from_shared != null)
                 {
-                    if (ImageUri != null && !profile_image_from_shared.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")) {
+                    if (ImageUri != null && !
+                            //profile_image_from_shared.equals(Constants.localhost+"/ExamscorerApp/API/Uploads/")) {
+                            profile_image_from_shared.equals(Constants.server+"/API/Uploads/")) {
+
                         if (update_user_name.getText().toString().trim().isEmpty()) {
                             Toast.makeText(ProfileActivity.this, "Enter your name", Toast.LENGTH_SHORT).show();
                         } else {
@@ -418,7 +426,8 @@ public class ProfileActivity extends AppCompatActivity {
 
 
                             SharedPreferences.Editor editor =sharedPreferences.edit();
-                            editor.putString(Constants.LOGIN_USER_IMAGE,"http://192.168.43.126/ExamscorerApp/API/Uploads/"+withoutspace+user_id+"."+"jpg");
+                            //editor.putString(Constants.LOGIN_USER_IMAGE,Constants.localhost+"/ExamscorerApp/API/Uploads/"+withoutspace+user_id+"."+"jpg");
+                            editor.putString(Constants.LOGIN_USER_IMAGE,Constants.server+"/API/Uploads/"+withoutspace+user_id+"."+"jpg");
                             editor.putString(Constants.LOGIN_USER_Name,update_user_name.getText().toString());
                             editor.apply();
                             startActivity(new Intent(ProfileActivity.this,BranchActivity.class));

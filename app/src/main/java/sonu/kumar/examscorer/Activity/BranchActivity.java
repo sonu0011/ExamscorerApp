@@ -542,7 +542,11 @@ public class BranchActivity extends AppCompatActivity implements NavigationView.
             }
         }
         if (shared_image_url != null) {
-            if (!shared_image_url.equals("http://192.168.43.126/ExamscorerApp/API/Uploads/")) {
+            if (!
+                    //shared_image_url.equals(Constants.localhost+"/ExamscorerApp/API/Uploads/")
+                    shared_image_url.equals(Constants.server+"/ExamscorerApp/API/Uploads/")
+                    ) {
+
                 Glide.with(BranchActivity.this).load(shared_image_url).into(profile_image);
 
             }

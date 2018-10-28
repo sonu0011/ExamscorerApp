@@ -166,7 +166,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                                     }
                                                     if (user_image.length() >0){
-                                                        editor.putString(Constants.LOGIN_USER_IMAGE,"http://192.168.43.126/ExamscorerApp/API/Uploads/"+user_image);
+
+                                                        //editor.putString(Constants.LOGIN_USER_IMAGE,Constants.localhost+"/API/Uploads/"+user_image);
+                                                        //editor.putString(Constants.LOGIN_USER_IMAGE,Constants.localhost+"/API/Uploads/"+user_image);
+                                                        editor.putString(Constants.LOGIN_USER_IMAGE,Constants.server+"/API/Uploads/"+user_image);
 
 
                                                     }
@@ -184,7 +187,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                                     }
                                                     if (user_image.length() >0){
-                                                        editor.putString(Constants.LOGIN_USER_IMAGE,"http://192.168.43.126/ExamscorerApp/API/Uploads/"+user_image);
+                                                        //editor.putString(Constants.LOGIN_USER_IMAGE,Constants.localhost+"/API/Uploads/"+user_image);
+                                                        editor.putString(Constants.LOGIN_USER_IMAGE,Constants.server+"/API/Uploads/"+user_image);
 
 
                                                     }editor.putString(Constants.LOGIN_USER_EMAIL,user_email);
