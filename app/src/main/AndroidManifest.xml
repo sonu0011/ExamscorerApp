@@ -55,6 +55,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.PapersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.FavouritesActivity"

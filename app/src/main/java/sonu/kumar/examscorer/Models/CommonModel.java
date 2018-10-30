@@ -14,9 +14,30 @@ public class CommonModel {
     String sp_title,sp_link,sp_code;
     int supply_papers,notes_sub_cat;
     String notes_cat_id,notes_cat_image,notes_cat_title,notes_count;
+    String papers_year,papers_code;
 
+    public CommonModel(String papers_year, String papers_code) {
+        this.papers_year = papers_year;
+        this.papers_code = papers_code;
+    }
 
-    public CommonModel(int notes_sub_cat, String notes_cat_id, String notes_cat_image, String notes_cat_title,String notes_count) {
+    public String getPapers_year() {
+        return papers_year;
+    }
+
+    public void setPapers_year(String papers_year) {
+        this.papers_year = papers_year;
+    }
+
+    public String getPapers_code() {
+        return papers_code;
+    }
+
+    public void setPapers_code(String papers_code) {
+        this.papers_code = papers_code;
+    }
+
+    public CommonModel(int notes_sub_cat, String notes_cat_id, String notes_cat_image, String notes_cat_title, String notes_count) {
         this.notes_sub_cat = notes_sub_cat;
         this.notes_cat_id = notes_cat_id;
         this.notes_cat_image = notes_cat_image;

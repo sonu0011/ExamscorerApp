@@ -46,30 +46,29 @@ import sonu.kumar.examscorer.Utills.Mysingleton;
 
 public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> {
     int i;
-    Context  context;
+    Context context;
     String sub_code;
     List<CommonModel> list;
     SharedPreferences sharedPreferences;
     CoordinatorLayout coordinatorLayout;
 
-    public static final String TAG ="PapersAdapter";
+    public static final String TAG = "PapersAdapter";
     private int lastPosition = -1;
 
     public PaperAdapter(int i, Context context, List<CommonModel> list) {
         this.i = i;
         this.context = context;
         this.list = list;
-        sharedPreferences = context.getSharedPreferences(Constants.SHARED_KEY,Context.MODE_PRIVATE);
 
     }
 
-    public PaperAdapter (Context context, String sub_code, List<CommonModel> list,CoordinatorLayout coordinatorLayout,int i) {
+    public PaperAdapter(Context context, String sub_code, List<CommonModel> list, CoordinatorLayout coordinatorLayout, int i) {
         this.i = i;
         this.context = context;
         this.sub_code = sub_code;
         this.list = list;
-        this.coordinatorLayout =coordinatorLayout;
-        sharedPreferences = context.getSharedPreferences(Constants.SHARED_KEY,Context.MODE_PRIVATE);
+        this.coordinatorLayout = coordinatorLayout;
+        //sharedPreferences = context.getSharedPreferences(Constants.SHARED_KEY, Context.MODE_PRIVATE);
 
 
     }
@@ -78,45 +77,43 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
         this.context = context;
         this.sub_code = sub_code;
         this.list = list;
-        this.coordinatorLayout =coordinatorLayout;
-         sharedPreferences = context.getSharedPreferences(Constants.SHARED_KEY,Context.MODE_PRIVATE);
+        this.coordinatorLayout = coordinatorLayout;
 
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return  new ViewHolder(LayoutInflater.from(context).inflate(R.layout.custom_papers_layout,parent,false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.custom_papers_layout, parent, false));
 
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-       final CommonModel model =  list.get(position);
+        final CommonModel model = list.get(position);
         String result = model.getPaper_title().substring(model.getPaper_title().indexOf("(") + 1, model.getPaper_title().indexOf(")"));
-        if (i ==1){
+        if (i == 1) {
             // for favorites
             holder.sub_name.setText(model.getPaper_title());
             int color = Color.parseColor("#FF0000");
             holder.paper_fav.setColorFilter(color);
 
-        }
-        else if (i ==2){
+        } else if (i == 2) {
             //for searched result
             holder.sub_name.setText(model.getPaper_title());
             holder.branch_name.setText(model.getBranch_name());
 
-        }
-        else {
+        } else {
             holder.sub_name.setText(result);
-            StringRequest stringRequest11 =new StringRequest(
+            StringRequest stringRequest11 = new StringRequest(
                     StringRequest.Method.POST,
                     Constants.Request_Url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.d(TAG, "onResponse: bind viewholder "+response);
-                            if (response.equals("1")){
+                            Log.d(TAG, "onResponse: bind viewholder " + response);
+                            if (response.equals("1")) {
                                 int color = Color.parseColor("#FF0000");
                                 holder.paper_fav.setColorFilter(color);
                             }
@@ -126,19 +123,21 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.d(TAG, "onErrorResponse: "+error.toString());
+                            Log.d(TAG, "onErrorResponse: " + error.toString());
 
                         }
                     }
-            ){
+            ) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    int user_id  = sharedPreferences.getInt(Constants.LOGIN_USER_ID,0);
-                    Map<String,String> map =new HashMap<>();
-                    map.put("run_time_fav","yes");
-                    map.put("user_id",String.valueOf(user_id));
+                    sharedPreferences = context.getSharedPreferences(Constants.SHARED_KEY, Context.MODE_PRIVATE);
+
+                    int user_id = sharedPreferences.getInt(Constants.LOGIN_USER_ID, 0);
+                    Map<String, String> map = new HashMap<>();
+                    map.put("run_time_fav", "yes");
+                    map.put("user_id", String.valueOf(user_id));
                     map.put("paper_id", String.valueOf(model.getPaper_id()));
-                    return  map;
+                    return map;
                 }
             };
 
@@ -147,8 +146,8 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
         }
 
 
-       holder.getData(position);
-        if(position >lastPosition) {
+        holder.getData(position);
+        if (position > lastPosition) {
 
             Animation animation = AnimationUtils.loadAnimation(context,
                     R.anim.animation_while_scrolling);
@@ -164,37 +163,32 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView  sub_name,branch_name;
-        ImageView paper_fav,paper_download,paper_share,remove;
+        TextView sub_name, branch_name;
+        ImageView paper_fav, paper_download, paper_share, remove;
         LinearLayout linearLayout;
-        Typeface custom_font = Typeface.createFromAsset(context.getAssets(),  "roboto.ttf");
+        Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "roboto.ttf");
 
         public ViewHolder(View itemView) {
             super(itemView);
-            sub_name =itemView.findViewById(R.id.papers_mst);
-            paper_fav =itemView.findViewById(R.id.papers_fav);
-            paper_download =itemView.findViewById(R.id.papers_download);
-            paper_share  = itemView.findViewById(R.id.papers_share);
+            sub_name = itemView.findViewById(R.id.papers_mst);
+            paper_fav = itemView.findViewById(R.id.papers_fav);
+            paper_download = itemView.findViewById(R.id.papers_download);
+            paper_share = itemView.findViewById(R.id.papers_share);
             branch_name = itemView.findViewById(R.id.branch_name);
-            remove =itemView.findViewById(R.id.remove_from_fav);
+            remove = itemView.findViewById(R.id.remove_from_fav);
             linearLayout = itemView.findViewById(R.id.brnch_name_layout);
-            sub_name.setTypeface(custom_font,Typeface.BOLD);
-            branch_name.setTypeface(custom_font,Typeface.BOLD);
+            sub_name.setTypeface(custom_font, Typeface.BOLD);
+            branch_name.setTypeface(custom_font, Typeface.BOLD);
 
-            if (i ==1){
+            if (i == 1) {
                 // for  favourites
                 remove.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.INVISIBLE);
             }
-            if (i ==3){
+            if (i == 3) {
                 //for papers
                 linearLayout.setVisibility(View.INVISIBLE);
-
             }
-
-
-
-
         }
 
         public void getData(final int position) {
@@ -221,7 +215,6 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                     browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     context.startActivity(Intent.createChooser(browserIntent, "Download"));
-
 
                 }
             });
@@ -264,6 +257,8 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                                             ) {
                                                 @Override
                                                 protected Map<String, String> getParams() throws AuthFailureError {
+                                                    sharedPreferences = context.getSharedPreferences(Constants.SHARED_KEY, Context.MODE_PRIVATE);
+
                                                     int user_id = sharedPreferences.getInt(Constants.LOGIN_USER_ID, 0);
                                                     Map<String, String> map = new HashMap<>();
                                                     map.put("removed_fav", "yes");
@@ -296,6 +291,8 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                         ) {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
+                                sharedPreferences = context.getSharedPreferences(Constants.SHARED_KEY, Context.MODE_PRIVATE);
+
                                 int user_id = sharedPreferences.getInt(Constants.LOGIN_USER_ID, 0);
                                 Map<String, String> map = new HashMap<>();
                                 map.put("set_fav", "yes");
@@ -308,12 +305,11 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                         Mysingleton.getInstance(context).addToRequestQuee(stringRequest);
                     }
                 });
-
             }
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AlertDialog.Builder  builder = new AlertDialog.Builder(context);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Remove");
                     builder.setMessage("Do you want to Remove ? ");
                     builder.setIcon(R.drawable.ic_delete_black_24dp);
@@ -328,19 +324,10 @@ public class PaperAdapter extends RecyclerView.Adapter<PaperAdapter.ViewHolder> 
                                         @Override
                                         public void onResponse(String response) {
                                             Log.d(TAG, "onResponse: delete button clicked 1 " + response);
-//                                            if (response.equals("0")) {
-//                                               if (list !=null){
-//                                                   if (list.size() >0){
-//
-//                                                   }
-//                                               }
-//
-//
-//                                            }
                                             list.remove(position);
 
                                             notifyItemRemoved(position);
-                                            notifyItemRangeChanged(position,list.size());
+                                            notifyItemRangeChanged(position, list.size());
 
                                         }
                                     },

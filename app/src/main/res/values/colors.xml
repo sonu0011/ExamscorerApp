@@ -6,6 +6,8 @@
     <color name="colorTransparent">#ccc</color>
     <color name="ripple">#b5000000</color>
     <color name="whitcolor">#fff</color>
+    <color name="colorprimaty1">#ffc107</color>
+    <color name="colorprimarydark1">#ffa000</color>
     <!-- card colors -->
     <color name="card_background">#ffffff</color>
     <color name="transparent">#00000000</color>
