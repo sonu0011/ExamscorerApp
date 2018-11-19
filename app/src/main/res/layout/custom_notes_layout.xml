@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_marginTop="10dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        style="@style/CardView"
+        app:cardBackgroundColor="#fff"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:id="@+id/notessubimage"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/images"
+                android:scaleType="centerCrop"
+                />
+            <TextView
+                android:id="@+id/notessubheading"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:text="Images"
+                android:textColor="@color/textColorNotes"
+                android:paddingLeft="10dp"
+                android:textSize="20dp"
+                android:gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/notessubcatcount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:text="420"
+                android:textColor="@color/textColorNotes"
+
+                android:textSize="15dp"
+                android:gravity="center_vertical|right"
+                />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:src="@drawable/forward_arrow"
+                />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

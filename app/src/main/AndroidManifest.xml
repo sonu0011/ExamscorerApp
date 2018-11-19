@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="sonu.kumar.examscorer">
+    package="sk.android.examscorer">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,23 +10,19 @@
     <uses-permission android:name="android.permission.BATTERY_STATS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-
     <application
-        android:name=".Utills.App"
+        android:name="sk.android.examscorer.Utills.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/app_id"/>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
-            android:name=".Activity.SplashActivity"
+            android:name="sk.android.examscorer.Activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -36,66 +32,68 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.IntroActivity"
+            android:name="sk.android.examscorer.Activity.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.LoginActivity"
+            android:name="sk.android.examscorer.Activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.BranchActivity"
+            android:name="sk.android.examscorer.Activity.BranchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.SemesterActivity"
+            android:name="sk.android.examscorer.Activity.SemesterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.SubjecstActivity"
+            android:name="sk.android.examscorer.Activity.SubjecstActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.PapersActivity"
+            android:name="sk.android.examscorer.Activity.PapersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="sk.android.examscorer.Activity.FavouritesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="sk.android.examscorer.Activity.SearchedResultsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="sk.android.examscorer.Activity.ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.FavouritesActivity"
+            android:name="sk.android.examscorer.Activity.ReappearsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.SearchedResultsActivity"
+            android:name="sk.android.examscorer.Activity.NotesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activity.ProfileActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.ReappearsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.NotesActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity.AboutActivity"
+            android:name="sk.android.examscorer.Activity.AboutActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.NotesSubCategory"
+            android:name="sk.android.examscorer.Activity.NotesSubCategory"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="sk.android.examscorer.Activity.ImagesActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".Activity.ImagesActivity"
+        <service android:name="sk.android.examscorer.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="sk.android.examscorer.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="sk.android.examscorer.Activity.ForgetPassword"
             android:screenOrientation="portrait"/>
-
-        <service
-            android:name=".MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
-        <service
-            android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

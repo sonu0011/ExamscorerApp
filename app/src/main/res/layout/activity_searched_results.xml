@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sonu.kumar.examscorer.Activity.SearchedResultsActivity">
+    tools:context="sk.android.examscorer.Activity.SearchedResultsActivity">
 
     <TextView
         android:id="@+id/showingresultsfor"
@@ -30,6 +30,14 @@
         android:textColor="#000"
         android:textSize="20sp"
         android:textStyle="normal" />
+    <TextView
+        android:id="@+id/notes_searched_result"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:text="Note:  AB stands for All Branches"
+        android:layout_below="@+id/showresult"
+        android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/search_papers"
@@ -38,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:layout_marginTop="80dp" />
+        android:layout_marginTop="70dp" />
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/searched_coord"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="sonu.kumar.examscorer.Activity.BranchActivity">
+    tools:context="sk.android.examscorer.Activity.BranchActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,25 +28,25 @@
         </android.support.v7.widget.Toolbar>
 
         <!--<Button-->
-            <!--android:id="@+id/select_option_btn"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/optionlayout"-->
-            <!--android:layout_gravity="start"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:layout_marginRight="15dp"-->
+        <!--android:id="@+id/select_option_btn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/optionlayout"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:layout_marginLeft="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
 
-            <!--android:layout_marginTop="9dp"-->
-            <!--android:background="@drawable/searchbg"-->
-            <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
-            <!--android:fontFamily="@font/custom_font"-->
-            <!--android:onClick="SelectOptions"-->
-            <!--android:text="   Please Select"-->
-            <!--android:textAlignment="textStart"-->
-            <!--android:textAllCaps="false"-->
-            <!--android:textColor="#000"-->
-            <!--android:textStyle="bold"-->
-            <!--android:visibility="visible" />-->
+        <!--android:layout_marginTop="9dp"-->
+        <!--android:background="@drawable/searchbg"-->
+        <!--android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"-->
+        <!--android:fontFamily="@font/custom_font"-->
+        <!--android:onClick="SelectOptions"-->
+        <!--android:text="   Please Select"-->
+        <!--android:textAlignment="textStart"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:textColor="#000"-->
+        <!--android:textStyle="bold"-->
+        <!--android:visibility="visible" />-->
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/optionlayout"
@@ -90,53 +90,43 @@
         </LinearLayout>
 
         <!--<android.support.v7.widget.SearchView-->
-            <!--android:id="@+id/searchview"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/select_option_btn"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:layout_marginTop="2dp"-->
-            <!--android:background="@drawable/searchbg"-->
-            <!--android:focusable="true"-->
-            <!--android:visibility="visible"-->
-            <!--app:defaultQueryHint="Search"-->
-            <!--app:queryHint="search" />-->
+        <!--android:id="@+id/searchview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/select_option_btn"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:background="@drawable/searchbg"-->
+        <!--android:focusable="true"-->
+        <!--android:visibility="visible"-->
+        <!--app:defaultQueryHint="Search"-->
+        <!--app:queryHint="search" />-->
 
         <EditText
+            android:layout_centerHorizontal="true"
 
             android:id="@+id/home_paper_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/optionlayout"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/searchbg"
+
+            android:background="@drawable/search_btb_bg"
             android:fontFamily="@font/custom_font_dark"
-            android:hint="  Subject or Subject code"
+            android:hint="  Search"
+
+            android:imeOptions="actionSearch"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
             android:inputType="text"
-            android:maxLength="20"
+
+            android:maxLength="30"
             android:padding="8dp"
             android:textColorHint="#A9A9A9"
+            android:textStyle="bold"
             android:visibility="visible" />
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="1dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="112dp"
-            android:layout_toLeftOf="@+id/homesearch_btn"
-            android:background="@drawable/line1" />
-        <ImageView
-            android:id="@+id/homesearch_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/home_paper_search"
-            android:layout_alignRight="@+id/home_paper_search"
-            android:layout_alignTop="@+id/home_paper_search"
-            android:layout_marginTop="4dp"
-            android:src="@drawable/searchicon" />
         <FrameLayout
             android:id="@+id/framelauout"
             android:layout_width="match_parent"

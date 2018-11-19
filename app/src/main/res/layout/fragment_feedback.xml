@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="sonu.kumar.examscorer.Fragments.FeedbackFragment">
+    tools:context="sk.android.examscorer.Fragments.FeedbackFragment">
 
 
     <!-- TODO: Update blank fragment layout -->

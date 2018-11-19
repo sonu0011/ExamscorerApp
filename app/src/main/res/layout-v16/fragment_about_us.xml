@@ -2,58 +2,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sonu.kumar.examscorer.Fragments.AboutUsFragment">
-   <RelativeLayout
-       android:layout_marginTop="40dp"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-       <TextView
-           android:id="@+id/our_mission"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="- Our Mission -"
-           android:textSize="25dp"
-           android:padding="10dp"
-           android:layout_margin="8dp"
-           android:textColor="#000"
-           android:fontFamily="@font/custom_font"
-           android:layout_centerHorizontal="true"/>
-       <TextView
-           android:id="@+id/about_heading"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_below="@+id/our_mission"
-           android:layout_centerHorizontal="true"
-           android:textSize="16sp"
-           android:padding="5sp"
-           android:fontFamily="@font/custom_font_dark"
-           android:layout_margin="5sp"
-           android:text="To provide PTU (B-Tech)  latest quesiton papers"/>
+    tools:context="sk.android.examscorer.Fragments.AboutUsFragment">
 
-       <TextView
-           android:layout_below="@+id/about_heading"
-           android:textSize="25dp"
-           android:padding="10dp"
-           android:layout_margin="8dp"
-           android:textColor="#000"
-           android:fontFamily="@font/custom_font"
-           android:layout_centerHorizontal="true"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="About"
-           android:id="@+id/about_about"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-       <TextView
-           android:id="@+id/about_paragraph"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_below="@+id/about_about"
-           android:textSize="16sp"
-           android:padding="8sp"
-           android:text="@string/heading"
-           android:fontFamily="@font/custom_font_dark"
-           android:layout_margin="5sp"/>
-   </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp">
 
+            <TextView
+                android:id="@+id/our_mission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/custom_font"
+                android:padding="10dp"
+                android:text="- My Mission -"
+                android:textColor="#000"
+                android:textSize="25dp" />
 
+            <TextView
+                android:id="@+id/about_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/our_mission"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5sp"
+                android:fontFamily="@font/custom_font_dark"
+                android:padding="5sp"
+                android:text="To provide PTU (B-Tech)  latest quesiton papers"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/about_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_heading"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:fontFamily="@font/custom_font"
+                android:padding="10dp"
+                android:text="About"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/about_paragraph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_about"
+                android:layout_margin="5sp"
+                android:fontFamily="@font/custom_font_dark"
+                android:padding="8sp"
+                android:text="@string/heading"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/about_paragraph"
+                android:layout_margin="10dp"
+                android:text="Note:"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/note"
+                android:layout_toRightOf="@+id/note"
+                android:text="@string/note" />
+        </RelativeLayout>
+
+    </ScrollView>
 </FrameLayout>

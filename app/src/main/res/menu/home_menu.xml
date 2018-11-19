@@ -4,17 +4,21 @@
 <item android:title="Main Menu"
     android:iconTint="#fff"
 
-    android:icon="@drawable/ic_action_dots"
+    android:icon="@drawable/ic_more_vert_black_24dp"
     app:showAsAction="always">
     <menu>
+        <group android:id="@+id/gr1">
         <item
             android:id="@+id/profile_setting"
-            android:icon="@drawable/ratingicon"
+            android:icon="@drawable/ic_star_black_24dp"
             android:title="Rate Us" />
+        </group>
+        <group android:id="@+id/gr2">
         <item
             android:id="@+id/sign_out"
-            android:icon="@drawable/singout"
+            android:icon="@drawable/ic_forward_black_24dp"
             android:title="Sign Out" />
+        </group>
     </menu>
 </item>
 

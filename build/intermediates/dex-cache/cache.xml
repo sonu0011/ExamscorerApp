@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.3.aar/a485a9b6e1d9955d62871ca96a5aac81/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="47fad7a852da507191f2284281ff1cdb5896d888">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/volley-1.0.0.aar/35915f636e5c10170a18bcb0788d926d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/86b110193b81b8ffa350f0591c1f8da8/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ec657bb192b20229696216bf233779b16bf75a54">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/feaa48535ebdcf23be71e0840e617d3c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b15c6ded887ad967e20bb335c1a121b253c04dce">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/818698a2b9b0bb73fd736f73228b4a23/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="791ae2023f98dca602015cd1661accbd4590ed03">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/62a5c784d684bd4bf1752cc35e04d3c3/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8a9fd7c97f1d13f97f3b52f9d2e54cd857d5acf9">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/e2cf362869209d7f5b44d9f794205661/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d968b9bd0011800e0d333d1571b8d34bcb8a0b6e">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/96d0d2ccb8bec1e1c0d20a809b00e588/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="25cdd380f0a1b2f67a0b7253bbf1f343df981e5e">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/27.1.1/39ded76b5e1ce1c5b2688e1d25cdc20ecee32007/support-annotations-27.1.1.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="39ded76b5e1ce1c5b2688e1d25cdc20ecee32007">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.3.aar/c56d9699dd7869f3c6ad166f3dfc287b/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="694a642670bddee011a52670fc77f018d2b731e3">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.7.0.aar/ff137cf5c9289c0ea98a543dafac30f3/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2e62a28e7a8ebe7b2ae508c4ef6666a2d2a606ab">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/c4f83ebec48558b94a4030136bab6c37/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9d0ff1960f148dafff5b945e8596c060ff3cf88e">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/926bbcfe89417d16fb0e4f673689042c/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="874f1143c11f5d38533efe512bf913e3e847e7df">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.1.aar/1b89b8b88b41053b84f327135492a275/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="dd86dfc9c6946cf3fc34ba8bebd49e0e0845a89e">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/a061196fc55e3d07b517ec726e060f06/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3304d33470ff64cf83bce9189ff3648a42eb2aa7">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/modules-2/files-2.1/com.android.support.constraint/constraint-layout-solver/1.1.3/bde0667d7414c16ed62d3cfe993cff7f9d732373/constraint-layout-solver-1.1.3.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bde0667d7414c16ed62d3cfe993cff7f9d732373">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/4c23dc9f6460f8ed76845f54016d2c0f/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="88c68e5ef7c5ace393d014c9ec5fe736b1ca55cf">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/ca857b682e6ce9a6c0d17d965aca011d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4798b2c2dd1fa53176696fa416890d27acbf5617">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/e232fb944de8639eb3809321afee1a42/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ae6d33f37143b08cd8c477c9e348d61ef7ed7eba">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/play-services-stats-16.0.1.aar/a1448158776c4884c9b75ebf07ed9ff8/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a08c6dadfd96a281d9fddf59a767749e43064c23">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-17.0.1.aar/45432521a02acdfeb2e98233911552ea/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9b7b9f800b62f974cd3a75faf1720c010c7ac244">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/555dcf0ca708e154a9120db6e57cd0bd/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e2bbe48deed35056023eed2cdc0cc92e5c7d3617">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/2b2710860315390fa57fd334c5bfeb58/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7038c6d960d3fe26fd41bc509f256c9692d886ce">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/a76a2d4af8ef952f341bcc2f54c038ae/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c9a721adcd7dbae7a197b0ef81102336539f63ff">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.1.0/8007981f7d7540d89cd18471b8e5dcd2b4f99167/common-1.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8007981f7d7540d89cd18471b8e5dcd2b4f99167">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.3.aar/a1d89e7f5d52d7971719cd591b7c78ce/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4096514ce1185b89df80681e982486efa30e440e">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/33c6a596434142d5460d7214af74965d/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="23dcb4803d3103bde3f3f5db978a726338fe49ae">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/6c8bbca0f291a5f9add5660cff21a548/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5b9f57b1fb76487516b73b908f54c60c48202d84">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/f9b5ae3150ed338a76d89c267c54adf5/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="71d380aeac037e63bab7bda2ba211777e16a2f42">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/53d6414204fe5c46111f2d9f9c17faaa/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4d2b8ad415048e88b41ba4afcaafe36150e69b8c">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.8.0/9bada650e1afe9c6174ddc0d113c1fce4dc26fe0/glide-3.8.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9bada650e1afe9c6174ddc0d113c1fce4dc26fe0">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/c4b755258f54906de9f2c9fa7d1d155e/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2feadd535770271ca57b7b431f42151aa4af324a">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/circleimageview-2.2.0.aar/ab022f8f786d81935b84b928feda78fe/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e70a3fed299d84cd868614e11021664d72b8e488">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/e12cc423de21af0c367ddb14157e5f52/jars/classes.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1fd3ceac7f415975323d52c6c6057db409a907f6">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/sonu/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.1.0/edf3f7bfb84a7521d0599efa3b0113a0ee90f85/common-1.1.0.jar"
+        jumboMode="false"
+        min-sdk-version="15"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0edf3f7bfb84a7521d0599efa3b0113a0ee90f85">
+        <dex dex="/home/sonu/Examscorer/app/build/intermediates/transforms/preDex/release/35.jar" />
+    </item>
+
+</items>

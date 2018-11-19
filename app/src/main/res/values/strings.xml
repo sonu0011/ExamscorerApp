@@ -19,5 +19,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello H fragment</string>
-    <string name="heading">Examscorer is an android app, from where you can download PTU(B-Tech) latest question papers. You can also visit website examscorer.co.in. Here you have same material but from app you can also download important pdf\'s ,notes and ppt\'s . Support us by sharing this app to your friends. \n Thank You!</string>
+    <string name="heading">Examscorer is an android app, from where you can download PTU(B-Tech) latest question papers. You can also visit website examscorer.co.in. Here you have same material but from app you can also download important pdf\'s ,notes and ppt\'s . Support me by sharing this app to your friends. \n Thank You!</string>
+    <string name="title_activity_fullwidthimage">FullwidthimageActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="note">If you have any study material or any question papers please contact me</string>
+    <string name="notice">Note : If you or your friends have question papers of this particular subject you can contact me.I\'ll will upload it.It will help many students</string>
+    <string name="notice1">Note : If you or your friends have any type of study material , Please contact me.I\'ll upload it.It will help many students</string>
 </resources>

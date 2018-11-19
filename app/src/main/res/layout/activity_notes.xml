@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/images"
     android:layout_height="match_parent"
 
-    tools:context="sonu.kumar.examscorer.Activity.NotesActivity">
+    tools:context="sk.android.examscorer.Activity.NotesActivity">
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="15dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:id="@+id/sub_recycleview"/>
+    <TextView
+        android:id="@+id/notice123"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:padding="13dp"
+        android:layout_margin="2dp"
+        android:textSize="17sp"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sub_recycleview"
+        android:text="@string/notice1"
+       />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
